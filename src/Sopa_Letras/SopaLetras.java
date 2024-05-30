@@ -84,6 +84,46 @@ public class SopaLetras {
         cadena += Integer.toString(arista.getDestino());
         return cadena;
     }
+
+    public char[][] getLetraSopa() {
+        return LetraSopa;
+    }
+
+    public void setLetraSopa(char[][] LetraSopa) {
+        this.LetraSopa = LetraSopa;
+    }
+
+    public int[][] getPosicioneSopa() {
+        return PosicioneSopa;
+    }
+
+    public void setPosicioneSopa(int[][] PosicioneSopa) {
+        this.PosicioneSopa = PosicioneSopa;
+    }
+
+    public int getNumCol() {
+        return numCol;
+    }
+
+    public void setNumCol(int numCol) {
+        this.numCol = numCol;
+    }
+
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public void setNumFilas(int numFilas) {
+        this.numFilas = numFilas;
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
+    }
             
         
         

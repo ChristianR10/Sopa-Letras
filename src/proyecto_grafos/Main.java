@@ -4,6 +4,8 @@
  */
 package proyecto_grafos;
 
+import EDD.Pila;
+import Sopa_Letras.Busqueda;
 import javax.swing.JOptionPane;
 import Sopa_Letras.SopaLetras;
 
@@ -25,12 +27,19 @@ public class Main {
         
         //Bucle imprimir lista adyacencia (Prueba)
         while (true){
-            String input = JOptionPane.showInputDialog("Inserte Nodo: ");
+            /*String input = JOptionPane.showInputDialog("Inserte Nodo: ");
             if (input == "x"){break;}
             else{
             String cadena = sopaletra.imprimirAdyacentes(Integer.parseInt(input));
-            JOptionPane.showMessageDialog(null, cadena);}
+            JOptionPane.showMessageDialog(null, cadena);}*/
             
+            String input = JOptionPane.showInputDialog("Inserte Palabra: ");
+            if (input == "0"){break;}
+            else{
+                Busqueda buscar = new Busqueda ();
+                Pila p = buscar.buscarBFS(sopaletra.getGrafo(), input);
+                p.imprimir();
+            }
         }
     }
 }
