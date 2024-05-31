@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Sopa_Letras;
-import EDD.Cola;
 import EDD.Pila;
 import Grafo.Arista;
 import Grafo.Grafo;
 import Grafo.Vertice;
-import javax.swing.JOptionPane;
 
 /**
  *
