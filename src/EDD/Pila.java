@@ -53,7 +53,7 @@ public class Pila {
     public void imprimir (){
         String cadena = "";
         while (!vacia()){
-            cadena += first.getDato();
+            cadena += first.getDato()+", ";
             desapilar();
         }
         JOptionPane.showMessageDialog(null, cadena);

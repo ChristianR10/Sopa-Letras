@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String letras = "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P";
+        String letras = "C, X, E, O, H, A, G, J, U, F, D, G, Z, G, A, Q";
         SopaLetras sopaletra = new SopaLetras (4,4);
         sopaletra.armarSopa(letras);
         
@@ -34,10 +34,9 @@ public class Main {
             JOptionPane.showMessageDialog(null, cadena);}*/
             
             String input = JOptionPane.showInputDialog("Inserte Palabra: ");
-            if (input == "0"){break;}
+            if ("0".equals(input)){break;}
             else{
-                Busqueda buscar = new Busqueda ();
-                Pila p = buscar.buscarBFS(sopaletra.getGrafo(), input);
+                Pila p = sopaletra.buscarBFS(input);
                 p.imprimir();
             }
         }

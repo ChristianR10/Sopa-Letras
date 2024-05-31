@@ -4,6 +4,7 @@
  */
 package Sopa_Letras;
 
+import EDD.Pila;
 import Grafo.Arista;
 import Grafo.Grafo;
 import Grafo.Vertice;
@@ -30,6 +31,7 @@ public class SopaLetras {
     }
             
     public void armarSopa (String cadena){
+        cadena = cadena.toUpperCase();
         String [] parts = cadena.split(", ");
         crearVertices(parts, grafo);
         crearAristas (grafo);
@@ -83,6 +85,11 @@ public class SopaLetras {
         }
         cadena += Integer.toString(arista.getDestino());
         return cadena;
+    }
+    
+    public Pila buscarBFS (String palabra){
+        Busqueda buscarBFS = new Busqueda ();
+        return buscarBFS.buscarBFS(this.grafo, palabra.toUpperCase());
     }
 
     public char[][] getLetraSopa() {

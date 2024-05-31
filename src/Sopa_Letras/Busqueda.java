@@ -8,6 +8,7 @@ import EDD.Pila;
 import Grafo.Arista;
 import Grafo.Grafo;
 import Grafo.Vertice;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,13 +24,17 @@ public class Busqueda {
         Pila P = new Pila ();
         Cola C = new Cola ();
         C.encolarPalabra(palabra);
+        //C.imprimir();
         Vertice V = G.getFirst();
-        for (int i = 1; i < G.getNumVer(); i++){
+        //JOptionPane.showMessageDialog(null, V.getDato());
+        for (int i = 0; i < G.getNumVer(); i++){
             if (C.getFirst().getDato().charAt(0) == V.getDato()){
                 if (BFS (G,V,C,P)){
-                break;}
-            V = V.getNext();
+                    P.apilar(Integer.toString(V.getPosicion()));
+                    break;
+                }
             }
+            V = V.getNext();
         }
         return P;
     }
@@ -37,20 +42,23 @@ public class Busqueda {
     public boolean BFS (Grafo G, Vertice V, Cola C, Pila P){
         if (C.vacia()){return true;}
         else{
+            Vertice vaux = V;
             boolean z = false;
             C.desencolar();
             if (!C.vacia()){
                 char elem = C.getFirst().getDato().charAt(0);
-                Arista aux = V.Adyacencia.getFirst();
-                for (int i = 1; i < V.Adyacencia.getNumAdy(); i++){
+                Arista aux = vaux.Adyacencia.getFirst();
+                for (int i = 0; i < vaux.Adyacencia.getNumAdy(); i++){
                     if (aux.getDato() == elem){
                         if (BFS (G, G.buscarVertice(aux.getDestino()), C, P)){
                             P.apilar(Integer.toString(aux.getDestino()));
                             z = true;
                             break;
+                        }
                     }
-                }  
-            }
+                    aux = aux.getNext();
+                }
+                if (!z){C.encolarPrimero(Character.toString(V.getDato()));}
             }
             else{return true;}
             return z;
