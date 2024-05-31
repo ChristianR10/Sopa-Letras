@@ -78,8 +78,8 @@ public class SopaLetras {
         //imprime Vertices Adyacentes de uno Solicitado
         String cadena = "";
         Vertice vertice = grafo.buscarVertice(v);
-        Arista arista = vertice.Adyacencia.getFirst();
-        for (int i = 1; i < vertice.Adyacencia.getNumAdy();i++){
+        Arista arista = vertice.getAdyacencia().getFirst();
+        for (int i = 1; i < vertice.getAdyacencia().getNumAdy();i++){
             cadena += Integer.toString(arista.getDestino())+", ";
             arista = arista.getNext();
         }

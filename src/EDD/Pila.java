@@ -43,22 +43,43 @@ public class Pila {
         }
     }
     
-    public void apilarPalabra (String S){
+    public void apilarPalabraInv (String S){
         String [] parts = S.split("");
         for (int i=0; i<S.length();i++){
-            apilar(parts[i]);
+            apilar(parts[S.length()-1-i]);
         }
+    }
+    
+    public boolean encontrado (String X){
+        Nodo aux = this.first;
+        boolean z = false;
+        for (int i = 0; i<size;i++){
+            if (aux.getDato().equals(X)){
+                z = true;
+                break;
+            }
+            aux = aux.getNext();
+        }
+        return z;
     }
     
     public void imprimir (){
         String cadena = "";
         while (!vacia()){
-            cadena += first.getDato()+", ";
+            cadena += first.getDato()+"-";
             desapilar();
         }
         JOptionPane.showMessageDialog(null, cadena);
     }
     
+    public void imprimirInv (){
+        String cadena = "";
+        while (!vacia()){
+            cadena = "-" + first.getDato() + cadena;
+            desapilar();
+        }
+        JOptionPane.showMessageDialog(null, cadena);
+    }
     
     //getter and setter
     public Nodo getFirst() {
@@ -76,7 +97,5 @@ public class Pila {
     public void setSize(int size) {
         this.size = size;
     }
-    
-    
-    
+      
 }

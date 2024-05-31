@@ -19,46 +19,44 @@ public class Busqueda {
     public Busqueda() {
     }
     
-    
     public Pila buscarBFS (Grafo G, String palabra){
-        Pila P = new Pila ();
-        Cola C = new Cola ();
-        C.encolarPalabra(palabra);
-        //C.imprimir();
+        Pila pilaLetras = new Pila ();
+        Pila pilaVisitados = new Pila ();
+        pilaLetras.apilarPalabraInv(palabra);
         Vertice V = G.getFirst();
-        //JOptionPane.showMessageDialog(null, V.getDato());
         for (int i = 0; i < G.getNumVer(); i++){
-            if (C.getFirst().getDato().charAt(0) == V.getDato()){
-                if (BFS (G,V,C,P)){
-                    P.apilar(Integer.toString(V.getPosicion()));
+            if (pilaLetras.getFirst().getDato().charAt(0) == V.getDato()){
+                pilaVisitados.apilar(Integer.toString(V.getPosicion()));
+                if (BFS (G,V,pilaLetras,pilaVisitados)){
                     break;
                 }
+                else {pilaVisitados.desapilar();}
             }
             V = V.getNext();
         }
-        return P;
+        return pilaVisitados;
     }
     
-    public boolean BFS (Grafo G, Vertice V, Cola C, Pila P){
-        if (C.vacia()){return true;}
+    public boolean BFS (Grafo G, Vertice V, Pila pilaLetras, Pila pilaVisitados){
+        if (pilaLetras.vacia()){return true;}
         else{
-            Vertice vaux = V;
             boolean z = false;
-            C.desencolar();
-            if (!C.vacia()){
-                char elem = C.getFirst().getDato().charAt(0);
-                Arista aux = vaux.Adyacencia.getFirst();
-                for (int i = 0; i < vaux.Adyacencia.getNumAdy(); i++){
-                    if (aux.getDato() == elem){
-                        if (BFS (G, G.buscarVertice(aux.getDestino()), C, P)){
-                            P.apilar(Integer.toString(aux.getDestino()));
+            pilaLetras.desapilar();
+            if (!pilaLetras.vacia()){
+                char elem = pilaLetras.getFirst().getDato().charAt(0);
+                Arista aux = V.getAdyacencia().getFirst();
+                for (int i = 0; i < V.getAdyacencia().getNumAdy(); i++){
+                    if (aux.getDato() == elem && !pilaVisitados.encontrado(Integer.toString(aux.getDestino()))){
+                        pilaVisitados.apilar(Integer.toString(aux.getDestino()));
+                        if (BFS (G, G.buscarVertice(aux.getDestino()), pilaLetras, pilaVisitados)){
                             z = true;
                             break;
                         }
+                        else {pilaVisitados.desapilar();}
                     }
                     aux = aux.getNext();
                 }
-                if (!z){C.encolarPrimero(Character.toString(V.getDato()));}
+                if (!z){pilaLetras.apilar(Character.toString(V.getDato()));}
             }
             else{return true;}
             return z;

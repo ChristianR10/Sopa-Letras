@@ -53,15 +53,6 @@ public class Cola {
         }
     }
     
-    public void encolarPrimero (String X){
-        //Arreglar esta funcion por favor que si no a Guillen le da algo
-        if (!vacia()){
-            Nodo nodo = new Nodo (X);
-            nodo.setNext(first);
-            first = nodo;
-            size ++;
-        }
-    }
     
     public void imprimir (){
         String cadena = "";

@@ -38,7 +38,7 @@ public class Grafo {
     public void NuevaArista (int x, int y){
         Vertice Origen = buscarVertice (x);
         Vertice Destino = buscarVertice (y);
-        Origen.Adyacencia.agregarArista(Destino); ///////////////////////////////////// arreglar esto
+        Origen.getAdyacencia().agregarArista(Destino);
         
     }
     
