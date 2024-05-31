@@ -5,7 +5,6 @@
 package proyecto_grafos;
 
 import EDD.Pila;
-import Sopa_Letras.Busqueda;
 import javax.swing.JOptionPane;
 import Sopa_Letras.SopaLetras;
 
