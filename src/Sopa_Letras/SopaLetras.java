@@ -4,6 +4,7 @@
  */
 package Sopa_Letras;
 
+import EDD.Pila;
 import Grafo.Arista;
 import Grafo.Grafo;
 import Grafo.Vertice;
@@ -30,6 +31,7 @@ public class SopaLetras {
     }
             
     public void armarSopa (String cadena){
+        cadena = cadena.toUpperCase();
         String [] parts = cadena.split(", ");
         crearVertices(parts, grafo);
         crearAristas (grafo);
@@ -76,13 +78,58 @@ public class SopaLetras {
         //imprime Vertices Adyacentes de uno Solicitado
         String cadena = "";
         Vertice vertice = grafo.buscarVertice(v);
-        Arista arista = vertice.Adyacencia.getFirst();
-        for (int i = 1; i < vertice.Adyacencia.getNumAdy();i++){
+        Arista arista = vertice.getAdyacencia().getFirst();
+        for (int i = 1; i < vertice.getAdyacencia().getNumAdy();i++){
             cadena += Integer.toString(arista.getDestino())+", ";
             arista = arista.getNext();
         }
         cadena += Integer.toString(arista.getDestino());
         return cadena;
+    }
+    
+    public Pila buscarBFS (String palabra){
+        Busqueda buscarBFS = new Busqueda ();
+        return buscarBFS.buscarBFS(this.grafo, palabra.toUpperCase());
+    }
+
+    public char[][] getLetraSopa() {
+        return LetraSopa;
+    }
+
+    public void setLetraSopa(char[][] LetraSopa) {
+        this.LetraSopa = LetraSopa;
+    }
+
+    public int[][] getPosicioneSopa() {
+        return PosicioneSopa;
+    }
+
+    public void setPosicioneSopa(int[][] PosicioneSopa) {
+        this.PosicioneSopa = PosicioneSopa;
+    }
+
+    public int getNumCol() {
+        return numCol;
+    }
+
+    public void setNumCol(int numCol) {
+        this.numCol = numCol;
+    }
+
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public void setNumFilas(int numFilas) {
+        this.numFilas = numFilas;
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
     }
             
         

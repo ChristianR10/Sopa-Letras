@@ -11,7 +11,7 @@ package Grafo;
 public class Vertice {
     private char Dato;
     private int Posicion;
-    public ListaAdyacencia Adyacencia; //////////////////poner privado
+    private ListaAdyacencia Adyacencia; 
     private Vertice Next;
 
     public Vertice(int posicion, char Dato) {
