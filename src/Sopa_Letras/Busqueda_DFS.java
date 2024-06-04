@@ -37,7 +37,6 @@ public class Busqueda_DFS {
             }
             Iter = Iter.getNext();
         }
-        this.PalabraEncontrada.imprimir();
         return this.PalabraEncontrada;
     }
     
