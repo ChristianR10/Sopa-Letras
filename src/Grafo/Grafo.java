@@ -13,16 +13,28 @@ public class Grafo {
     private Vertice first;
     private Vertice last;
 
+    /**
+     *
+     */
     public Grafo() {
         this.NumVer = 0;
         this.first = null;
         this.last = null;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean esVacia () {
     return first == null;
     }
     
+    /**
+     *
+     * @param n
+     * @return
+     */
     public Vertice buscarVertice (int n /*n: numero del vertice*/) {
         //Busca elemento de la lista
         Vertice aux = first;
@@ -35,6 +47,11 @@ public class Grafo {
         return aux;
     }
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public void NuevaArista (int x, int y){
         Vertice Origen = buscarVertice (x);
         Vertice Destino = buscarVertice (y);
@@ -42,6 +59,11 @@ public class Grafo {
         
     }
     
+    /**
+     *
+     * @param posicion
+     * @param Dato
+     */
     public void agregarVertice (int posicion, char Dato){
         // Agregar nuevo Vertice
         Vertice vertice = new Vertice(posicion, Dato);
@@ -57,26 +79,50 @@ public class Grafo {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumVer() {
         return NumVer;
     }
 
+    /**
+     *
+     * @param NumVer
+     */
     public void setNumVer(int NumVer) {
         this.NumVer = NumVer;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vertice getFirst() {
         return first;
     }
 
+    /**
+     *
+     * @param first
+     */
     public void setFirst(Vertice first) {
         this.first = first;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vertice getLast() {
         return last;
     }
 
+    /**
+     *
+     * @param last
+     */
     public void setLast(Vertice last) {
         this.last = last;
     }
