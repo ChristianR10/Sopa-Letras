@@ -12,13 +12,13 @@ import Grafo.Vertice;
  * @version 1.0
  */
 
-public class Busqueda {
+public class Busqueda_BFS {
     
     /**
      * Constructor de la clase Búsqueda, no recibe parámetros de entrada ni se le asigna ningún
      * valor a ningún parámetro
      */
-    public Busqueda() {
+    public Busqueda_BFS() {
     }
     
     /**
@@ -82,7 +82,5 @@ public class Busqueda {
         }
     }
     
-    public void DFS (){
-    }
 }
 

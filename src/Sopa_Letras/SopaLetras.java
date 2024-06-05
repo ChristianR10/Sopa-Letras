@@ -129,13 +129,13 @@ public class SopaLetras {
      * @return Pila ordenada con los distintos vértices donde se encuentran las letras de la palabra
      */
     public Pila buscarBFS (String palabra){
-        Busqueda buscarBFS = new Busqueda ();
+        Busqueda_BFS buscarBFS = new Busqueda_BFS ();
         return buscarBFS.buscarBFS(this.grafo, palabra.toUpperCase());
     }
     
     public Pila buscarDFS (String palabra){
         Busqueda_DFS buscarDFS = new Busqueda_DFS();
-        return buscarDFS.BuscarDFS(this.grafo, palabra);
+        return buscarDFS.BuscarDFS(this.grafo, palabra.toUpperCase());
     }
 
     
