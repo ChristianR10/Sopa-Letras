@@ -1,22 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package EDD;
 
 /**
- *
- * @author cgrc1
+ * Clase Nodo
+ * Incluye lo referente a la construcción de nodos 
+ * @author Christian Ramos
+ * @version 1.0
  */
+
 public class Nodo {
+    /**
+     * @param dato variable de tipo string que guarda la información del nodo
+     * @param next variable de tipo Nodo que apunta a otro nodo
+     */
     private String dato;
     private Nodo next;
 
+    /**
+     * Constructor de la clase Nodo, asigna automáticamente la variable dato según la entrada y a next le asigna null
+     * @param dato variable string que indica la información se desea que guarde el nodo
+     */
     public Nodo(String dato) {
         this.dato = dato;
         this.next = null;
     }
 
+    //getter and setter
     public String getDato() {
         return dato;
     }
@@ -34,3 +42,4 @@ public class Nodo {
     }
     
 }
+
