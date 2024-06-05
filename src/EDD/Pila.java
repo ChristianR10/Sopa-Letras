@@ -1,12 +1,13 @@
+
 package EDD;
 
 import javax.swing.JOptionPane;
 
 /**
- * Clase Cola
+ * Clase Pila
  * Incluye lo referente a la Estructura de Datos de tipo Pila, primitivas y principales métodos 
  * Esta clase depende de la clase Nodo
- * @author Christian Ramos
+ * @author Christian Ramos y Andrés Rojas
  * @version 1.0
  */
 
@@ -92,6 +93,16 @@ public class Pila {
         return z;
     }
     
+
+    /**
+     * Método que vacía la pila
+     * @author Andrés Rojas
+     */
+    public void VaciarPila(){
+        first = null;
+        size = 0;
+    }
+    
     /**
      * Método que imprime todos los elementos de la pila, empezando por el tope
      * En el proceso, la pila se destruye
@@ -105,6 +116,7 @@ public class Pila {
         JOptionPane.showMessageDialog(null, cadena);
     }
     
+
     /**
      * Método que imprime todos los elementos de la pila, empezando por el fondo
      * En el proceso, la pila se destruye
@@ -136,4 +148,3 @@ public class Pila {
     }
       
 }
-

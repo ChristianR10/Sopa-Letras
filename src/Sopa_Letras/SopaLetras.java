@@ -132,6 +132,11 @@ public class SopaLetras {
         Busqueda buscarBFS = new Busqueda ();
         return buscarBFS.buscarBFS(this.grafo, palabra.toUpperCase());
     }
+    
+    public Pila buscarDFS (String palabra){
+        Busqueda_DFS buscarDFS = new Busqueda_DFS();
+        return buscarDFS.BuscarDFS(this.grafo, palabra);
+    }
 
     
     //getter and setter
@@ -181,9 +186,6 @@ public class SopaLetras {
 
     public void setDiccionario(Diccionario diccionario) {
         this.diccionario = diccionario;
-    }
-            
-        
-        
+    }       
 }
 
