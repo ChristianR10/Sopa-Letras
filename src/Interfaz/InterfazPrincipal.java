@@ -152,11 +152,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
         // TODO add your handling code here:
-        try{
-            String palabra = textBFS.getText();
-            Pila posiciones = sopaletras.buscarBFS(palabra);
-            posiciones.imprimirInv();}
-        catch (Exception e){}
+        String palabra = textBFS.getText();
+        Pila posiciones = sopaletras.buscarBFS(palabra);
+        posiciones.imprimirInv();
         textBFS.setText("");
     }//GEN-LAST:event_buscarBFSActionPerformed
 

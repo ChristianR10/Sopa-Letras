@@ -40,7 +40,7 @@ public class SopaLetras {
         this.numCol = y;
         this.numFilas = x;
         this.grafo = new Grafo();
-        this.diccionario = new Diccionario();
+        //this.diccionario = new Diccionario();
     }
     
     /**
