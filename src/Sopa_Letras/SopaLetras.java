@@ -8,9 +8,8 @@ package Sopa_Letras;
  */
 
 import EDD.Pila;
-import Grafo.Arista;
-import Grafo.Grafo;
-import Grafo.Vertice;
+import Grafo.*;
+
 
 public class SopaLetras {
     

@@ -5,7 +5,7 @@
 package Interfaz;
 
 import EDD.Pila;
-import LecturaTXT.LecturaTXT;
+import ValidacionesTXT.LecturaTXT;
 import Sopa_Letras.SopaLetras;
 import java.io.File;
 import java.io.FileReader;
@@ -138,8 +138,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 }
                 //JOptionPane.showMessageDialog(null, cadena);
                 LecturaTXT txt = new LecturaTXT ();
-                if(txt.comprobacionTXT(cadena)){
+                if(txt.comprobacionTXT(cadena)==0){
                     this.sopaletras.armarSopa(cadena);}
+                else if (txt.comprobacionTXT(cadena)==1){
+                    String cadenaNueva = txt.nuevoTXT(cadena);
+                    this.sopaletras.armarSopa(cadenaNueva);
+                }
+                else {}
                 
             }
             catch (IOException el){el.printStackTrace();}

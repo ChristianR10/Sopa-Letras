@@ -27,14 +27,12 @@ public class Diccionario {
     public void LeerLetras (String cadena){
         String [] parts1 = cadena.split("tab\r\n");
         String [] parts2 = parts1[1].split("/");
-        //JOptionPane.showMessageDialog(null, parts2[0]);
         this.ListaLetras = parts2[0].toUpperCase(); 
     }
     
     public void LeerPalabras (String cadena){
         String [] parts1 = cadena.split("dic\r\n");
         String [] parts2 = parts1[1].split("/");
-        //JOptionPane.showMessageDialog(null, parts2[0]);
         this.ListaPalabras = parts2[0].toUpperCase();
     }
 

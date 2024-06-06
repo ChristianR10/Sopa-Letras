@@ -1,4 +1,4 @@
-package Sopa_Letras;
+package Grafo;
 import EDD.Pila;
 import Grafo.Arista;
 import Grafo.Grafo;
