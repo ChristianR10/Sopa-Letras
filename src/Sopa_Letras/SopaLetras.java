@@ -50,10 +50,8 @@ public class SopaLetras {
      */
     public void armarSopa (String cadena){
         this.diccionario.LeerTxT(cadena);
-        String letras = diccionario.getListaLetras();
-        String [] parts = letras.split(",");
-        parts = letras.split(" ");
-        crearVertices(parts, grafo);
+        String [] letras = diccionario.getListaLetras();
+        crearVertices(letras, grafo);
         crearAristas (grafo);
         
     }

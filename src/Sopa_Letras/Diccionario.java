@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
  * @author cgrc1
  */
 public class Diccionario {
-    private String ListaLetras;
-    private String ListaPalabras;
+    private String [] ListaLetras;
+    private String [] ListaPalabras;
     
     public Diccionario(){
     }
@@ -25,32 +25,34 @@ public class Diccionario {
     
     
     public void LeerLetras (String cadena){
-        String [] parts1 = cadena.split("tab\r\n");
-        String [] parts2 = parts1[1].split("/");
-        this.ListaLetras = parts2[0].toUpperCase(); 
+        String [] parts = cadena.split("tab\r\n");
+        parts = parts[1].split("\r\n/");
+        parts = parts[0].split(",");
+        this.ListaLetras = parts; 
     }
     
     public void LeerPalabras (String cadena){
-        String [] parts1 = cadena.split("dic\r\n");
-        String [] parts2 = parts1[1].split("/");
-        this.ListaPalabras = parts2[0].toUpperCase();
+        String [] parts = cadena.split("dic\r\n");
+        parts = parts[1].split("/");
+        parts = parts[0].split("\r\n");
+        this.ListaPalabras = parts;
     }
 
-    public String getListaLetras() {
+    public String[] getListaLetras() {
         return ListaLetras;
     }
 
-    public void setListaLetras(String ListaLetras) {
+    public void setListaLetras(String[] ListaLetras) {
         this.ListaLetras = ListaLetras;
     }
 
-    public String getListaPalabras() {
+    public String[] getListaPalabras() {
         return ListaPalabras;
     }
 
-    public void setListaPalabras(String ListaPalabras) {
+    public void setListaPalabras(String[] ListaPalabras) {
         this.ListaPalabras = ListaPalabras;
     }
-    
-    
+
+   
 }
