@@ -37,6 +37,7 @@ public class Busqueda_DFS {
                 DFS(Iter);
                 if(WordFound){break;}
             }
+            this.PalabraEncontrada.desapilar();
             Iter = Iter.getNext();
         }
         return this.PalabraEncontrada;
