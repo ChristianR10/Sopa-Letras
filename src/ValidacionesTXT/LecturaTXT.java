@@ -15,7 +15,7 @@ public class LecturaTXT {
     
     //poner una funcion general con las validaciones y haga validadciones en el txt
     //retorna 0 txt valido sin modificaciones
-    //retorna 1 txt valido con modificaciones
+    //retorna 1 txt valido con modificaciones menores
     //retorna 2 txt no valido
     public int comprobacionTXT(String txt){
         Validaciones validacion = new Validaciones();
@@ -24,14 +24,13 @@ public class LecturaTXT {
     }
     
     //en caso de que haya que modificar algun detalle palabra (acento)o haya que anexar alguna, que esta funcion retorne la nueva cadena , 
-    //si no hay que modificar nada in=out
     public String palabrasCorregidas(String txt){
         String palabra ="";
         return palabra;
     }
     
     //en caso de que haya que modificar las letras, que esta funcion lo retorne
-    //si no hay que modificar nada in=out 
+
     public String letrasCorregidas (String txt){
         String palabra = "";
         return palabra;
@@ -39,7 +38,7 @@ public class LecturaTXT {
     
     //funcion para construir un nuevo txt en base a modificaciones
     //(realizar si hay modificaciones en la validacion o si se agrega una nueva palabra)
-    //si no hay que modificar nada in=out
+
     public String nuevoTXT (String TxT){
         String palabras = palabrasCorregidas(TxT);
         String letras = letrasCorregidas (TxT);
