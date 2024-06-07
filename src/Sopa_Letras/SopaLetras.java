@@ -65,7 +65,7 @@ public class SopaLetras {
         int z = 0;
         for (int i=0;i<numFilas;i++){
             for (int j=0;j<numCol;j++){
-                LetraSopa [i][j] = parts[z].charAt(0); 
+                LetraSopa [i][j] = parts[z].toUpperCase().charAt(0); 
                 PosicioneSopa [i][j] = 4*(i)+(j);
                 grafo.agregarVertice(j+i*4, LetraSopa [i][j]);
                 z++;
