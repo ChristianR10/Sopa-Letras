@@ -14,18 +14,29 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 public class Diccionario {
+    /**
+     * @param ListaLetras array que guarda todas las letras de la sopa de letras
+     * @param ListaPalabras array que guarda todas las palabras del diccionario
+     */
     private String [] ListaLetras;
     private String [] ListaPalabras;
     
     public Diccionario(){
     }
 
+    /**
+     * funcion que en base a la lectura del txt guarda las letras y plabras
+     * @param cadena variable de tipo string que contiene toda la informacion del txt
+     */
     public void LeerTxT(String cadena){
         this.LeerLetras(cadena);
         this.LeerPalabras(cadena);
     }
     
-    
+    /**
+     * funcion que filtra la seccion de letras del txt y las almacena como parametro interno
+     * @param cadena variable de tipo string que contiene toda la informacion del txt
+     */
     public void LeerLetras (String cadena){
         String [] parts = cadena.split("tab\r\n");
         parts = parts[1].split("\r\n/");
@@ -36,6 +47,10 @@ public class Diccionario {
         }
     }
     
+    /**
+     * funcion que filtra la seccion de palabras del txt y las almacena como parametro interno
+     * @param cadena variable de tipo string que contiene toda la informacion del txt
+     */
     public void LeerPalabras (String cadena){
         String [] parts = cadena.split("dic\r\n");
         parts = parts[1].split("/");
@@ -46,6 +61,7 @@ public class Diccionario {
         }
     }
 
+    //getter and setter
     public String[] getListaLetras() {
         return ListaLetras;
     }
