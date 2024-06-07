@@ -29,7 +29,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.sopaletras = sopaletras;
-        this.func = new funcionesInterfaz (this);
+        this.func = new funcionesInterfaz(this);
         
     }
 
