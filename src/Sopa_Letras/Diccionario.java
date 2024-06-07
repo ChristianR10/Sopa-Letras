@@ -29,6 +29,9 @@ public class Diccionario {
         parts = parts[1].split("\r\n/");
         parts = parts[0].split(",");
         this.ListaLetras = parts; 
+        for (int i = 1; i < ListaLetras.length;i++){
+            ListaLetras[i] = ListaLetras[i].toUpperCase();
+        }
     }
     
     public void LeerPalabras (String cadena){
@@ -36,6 +39,9 @@ public class Diccionario {
         parts = parts[1].split("/");
         parts = parts[0].split("\r\n");
         this.ListaPalabras = parts;
+        for (int i = 1; i < ListaPalabras.length;i++){
+            ListaPalabras[i] = ListaPalabras[i].toUpperCase();
+        }
     }
 
     public String[] getListaLetras() {
