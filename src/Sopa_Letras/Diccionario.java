@@ -1,8 +1,3 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Sopa_Letras;
 
 import javax.swing.JOptionPane;
@@ -18,8 +13,8 @@ public class Diccionario {
      * @param ListaLetras array que guarda todas las letras de la sopa de letras
      * @param ListaPalabras array que guarda todas las palabras del diccionario
      */
-    private String [] ListaLetras;
-    private String [] ListaPalabras;
+    private String ListaLetras;
+    private String ListaPalabras;
     
     public Diccionario(){
     }
@@ -40,11 +35,11 @@ public class Diccionario {
     public void LeerLetras (String cadena){
         String [] parts = cadena.split("tab\r\n");
         parts = parts[1].split("\r\n/");
-        parts = parts[0].split(",");
-        this.ListaLetras = parts; 
-        for (int i = 1; i < ListaLetras.length;i++){
+        //parts = parts[0].split(",");
+        this.ListaLetras = parts[0].toUpperCase(); 
+        /*for (int i = 1; i < ListaLetras.length;i++){
             ListaLetras[i] = ListaLetras[i].toUpperCase();
-        }
+        }*/
     }
     
     /**
@@ -54,29 +49,48 @@ public class Diccionario {
     public void LeerPalabras (String cadena){
         String [] parts = cadena.split("dic\r\n");
         parts = parts[1].split("/");
-        parts = parts[0].split("\r\n");
-        this.ListaPalabras = parts;
-        for (int i = 1; i < ListaPalabras.length;i++){
-            ListaPalabras[i] = ListaPalabras[i].toUpperCase();
+        this.ListaPalabras = parts[0].toUpperCase();
+    }
+    
+    
+    public void agregarPalabra (String palabra){
+        if (palabraEnDiccionario(palabra)){
+            JOptionPane.showMessageDialog(null, "La palabra ya se encuentra en el diccionario");
         }
+        else{
+            this.ListaPalabras += palabra.toUpperCase() + "\r\n";
+            JOptionPane.showMessageDialog(null, "Palabra agregada al diccionario");
+        }
+    }
+    
+    public boolean palabraEnDiccionario (String palabra){
+        palabra = palabra.toUpperCase();
+        boolean encontrado = false;
+        String [] todasPalabras = ListaPalabras.split("\r\n");
+        for (int i = 0; i < todasPalabras.length; i++) {
+            if(palabra.equals(todasPalabras[i].toUpperCase())){
+                encontrado = true;
+                break;
+            }
+        }
+        return encontrado;
     }
 
     //getter and setter
-    public String[] getListaLetras() {
+    public String getListaLetras() {
         return ListaLetras;
     }
 
-    public void setListaLetras(String[] ListaLetras) {
+    public void setListaLetras(String ListaLetras) {
         this.ListaLetras = ListaLetras;
     }
 
-    public String[] getListaPalabras() {
+    public String getListaPalabras() {
         return ListaPalabras;
     }
 
-    public void setListaPalabras(String[] ListaPalabras) {
+    public void setListaPalabras(String ListaPalabras) {
         this.ListaPalabras = ListaPalabras;
     }
 
-   //hello
 }

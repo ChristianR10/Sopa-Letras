@@ -46,6 +46,11 @@ public class LecturaTXT {
         return txt;
     }
     
+    //funcion para verificar si una palabra es valida
+    //que solo tenga letras, no tenga acentos, min 3 letras y eso
+    public boolean palabraValida (String palabra){
+        return true;
+    }
     
 }
 

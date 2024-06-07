@@ -19,14 +19,16 @@ public class SopaLetras {
      * @param numCol indica la cantidad de columnas que posee la sopa de letras
      * @param numFilas indica la cantidad de filas que posee la sopa de letras
      * @param grafo variable de tipo grafo que indica el grafo formado por los vertices de la sopa de letras
+     * @param sopaArmada variable de tipo boolean que indica si la sopa de letras ya fue armada
      */
     
-    char [][] LetraSopa; //Matriz usando las letras
-    int [][] PosicioneSopa; //Matriz usando el numero de vertice
-    int numCol; //Nro. Columnas de la matriz
-    int numFilas; //Nro. Filas de la matriz
-    Grafo grafo;
-    Diccionario diccionario;
+    private char [][] LetraSopa; //Matriz usando las letras
+    private int [][] PosicioneSopa; //Matriz usando el numero de vertice
+    private int numCol; //Nro. Columnas de la matriz
+    private int numFilas; //Nro. Filas de la matriz
+    private Grafo grafo;
+    private Diccionario diccionario;
+    private boolean sopaArmada;
 
     /**
      * Constructor de la clase SopaLetras, recibe como entrada dos parámetros
@@ -40,6 +42,7 @@ public class SopaLetras {
         this.numFilas = x;
         this.grafo = new Grafo();
         this.diccionario = new Diccionario();
+        this.sopaArmada = false;
     }
     
     /**
@@ -50,9 +53,10 @@ public class SopaLetras {
      */
     public void armarSopa (String cadena){
         this.diccionario.LeerTxT(cadena);
-        String [] letras = diccionario.getListaLetras();
-        crearVertices(letras, grafo);
+        //String [] letras = diccionario.getListaLetras();
+        crearVertices(diccionario.getListaLetras(), grafo);
         crearAristas (grafo);
+        this.sopaArmada = true;
         
     }
     
@@ -61,7 +65,8 @@ public class SopaLetras {
      * @param parts variable de tipo String que indica la letra que se desea que tenga el vértice como dato
      * @param grafo variable de tipo grafo que indica la estructura grafo que posee la sopa de letras
      */
-    public void crearVertices (String [] parts, Grafo grafo){
+    public void crearVertices (String letras, Grafo grafo){
+        String [] parts = letras.split(",");
         int z = 0;
         for (int i=0;i<numFilas;i++){
             for (int j=0;j<numCol;j++){
@@ -183,6 +188,16 @@ public class SopaLetras {
 
     public void setDiccionario(Diccionario diccionario) {
         this.diccionario = diccionario;
-    }       
+    }  
+
+    public boolean isSopaArmada() {
+        return sopaArmada;
+    }
+
+    public void setSopaArmada(boolean sopaArmada) {
+        this.sopaArmada = sopaArmada;
+    }
+    
+    
 }
 

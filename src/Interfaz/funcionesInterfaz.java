@@ -21,22 +21,23 @@ public class funcionesInterfaz {
     }
     
     public void mostrarLetras (){
-        interfaz.getV0().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[0]);
-        interfaz.getV1().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[1]);
-        interfaz.getV2().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[2]);
-        interfaz.getV3().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[3]);
-        interfaz.getV4().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[4]);
-        interfaz.getV5().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[5]);
-        interfaz.getV6().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[6]);
-        interfaz.getV7().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[7]);
-        interfaz.getV8().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[8]);
-        interfaz.getV9().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[9]);
-        interfaz.getV10().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[10]);
-        interfaz.getV11().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[11]);
-        interfaz.getV12().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[12]);
-        interfaz.getV13().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[13]);
-        interfaz.getV14().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[14]);
-        interfaz.getV15().setText(interfaz.sopaletras.getDiccionario().getListaLetras()[15]);
+        String [] letras = interfaz.sopaletras.getDiccionario().getListaLetras().split(",");
+        interfaz.getV0().setText(letras[0]);
+        interfaz.getV1().setText(letras[1]);
+        interfaz.getV2().setText(letras[2]);
+        interfaz.getV3().setText(letras[3]);
+        interfaz.getV4().setText(letras[4]);
+        interfaz.getV5().setText(letras[5]);
+        interfaz.getV6().setText(letras[6]);
+        interfaz.getV7().setText(letras[7]);
+        interfaz.getV8().setText(letras[8]);
+        interfaz.getV9().setText(letras[9]);
+        interfaz.getV10().setText(letras[10]);
+        interfaz.getV11().setText(letras[11]);
+        interfaz.getV12().setText(letras[12]);
+        interfaz.getV13().setText(letras[13]);
+        interfaz.getV14().setText(letras[14]);
+        interfaz.getV15().setText(letras[15]);
     }
     
     public void colorearLetras (Pila vertices, int n){

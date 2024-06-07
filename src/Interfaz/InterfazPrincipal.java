@@ -5,7 +5,7 @@
 package Interfaz;
 
 import EDD.Pila;
-import ValidacionesTXT.LecturaTXT;
+import ValidacionesTXT.*;
 import Sopa_Letras.SopaLetras;
 import java.io.File;
 import java.io.FileReader;
@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -24,12 +25,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
      * Creates new form InterfazPrincipal
      */
     SopaLetras sopaletras;
-    funcionesInterfaz func; 
+    funcionesInterfaz func;
+    LecturaTXT validar;
     public InterfazPrincipal(SopaLetras sopaletras) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.sopaletras = sopaletras;
         this.func = new funcionesInterfaz(this);
+        this.validar = new LecturaTXT();
         
     }
 
@@ -73,6 +76,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         buscarBFS = new javax.swing.JToggleButton();
         guardarTXT = new javax.swing.JButton();
+        agregarDic = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tiempo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +99,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 textActionPerformed(evt);
             }
         });
-        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 160, -1));
+        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
 
         buscarDFS.setText("DFS");
         buscarDFS.addActionListener(new java.awt.event.ActionListener() {
@@ -99,15 +107,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 buscarDFSActionPerformed(evt);
             }
         });
-        jPanel1.add(buscarDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 60, -1));
+        jPanel1.add(buscarDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 80, -1));
 
-        Dic.setText("Diccionario");
+        Dic.setText("Lista ");
         Dic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DicActionPerformed(evt);
             }
         });
-        jPanel1.add(Dic, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        jPanel1.add(Dic, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 80, -1));
 
         V4.setEditable(false);
         V4.setBackground(new java.awt.Color(255, 255, 255));
@@ -227,7 +235,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 allDFSActionPerformed(evt);
             }
         });
-        jPanel1.add(allDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+        jPanel1.add(allDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 80, -1));
 
         allBFS.setText("BFS");
         allBFS.addActionListener(new java.awt.event.ActionListener() {
@@ -235,13 +243,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 allBFSActionPerformed(evt);
             }
         });
-        jPanel1.add(allBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
+        jPanel1.add(allBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 80, -1));
 
-        jLabel1.setText("Buscar todas ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Diccionario");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
-        jLabel2.setText("Buscar palabra");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Buscar palabra específica");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
 
         buscarBFS.setText("BFS");
         buscarBFS.addActionListener(new java.awt.event.ActionListener() {
@@ -249,16 +259,42 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 buscarBFSActionPerformed(evt);
             }
         });
-        jPanel1.add(buscarBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 60, -1));
+        jPanel1.add(buscarBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 80, -1));
 
         guardarTXT.setText("Guardar TXT");
         jPanel1.add(guardarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        agregarDic.setText("Agregar");
+        agregarDic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarDicActionPerformed(evt);
+            }
+        });
+        jPanel1.add(agregarDic, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Buscar todas las palabras");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+
+        jLabel4.setText("ms");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, -1, -1));
+
+        tiempo.setEditable(false);
+        tiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 312, 60, 20));
+
+        jLabel5.setText("Tiempo");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,6 +307,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void abrirTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirTXTActionPerformed
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("archivos de texto", "txt");
+        fc.setFileFilter(filter);
         int selection = fc.showOpenDialog(this);
         
         if (selection == JFileChooser.APPROVE_OPTION){
@@ -284,19 +322,21 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                     valor = fr.read();
                 }
                 //JOptionPane.showMessageDialog(null, cadena);
-                LecturaTXT txt = new LecturaTXT ();
-                if(txt.comprobacionTXT(cadena)==0){
+                
+                if(validar.comprobacionTXT(cadena)==0){
                     this.sopaletras.armarSopa(cadena);
                     func.mostrarLetras();
                     func.colorReset();
                 }
-                else if (txt.comprobacionTXT(cadena)==1){
-                    String cadenaNueva = txt.nuevoTXT(cadena);
+                else if (validar.comprobacionTXT(cadena)==1){
+                    String cadenaNueva = validar.nuevoTXT(cadena);
                     this.sopaletras.armarSopa(cadenaNueva);
                     func.mostrarLetras();
                     func.colorReset ();
                 }
-                else {}
+                else {
+                    JOptionPane.showMessageDialog(null, "Archivo de texto no válido");
+                }
                 
             }
             catch (IOException el){el.printStackTrace();}
@@ -309,56 +349,110 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void buscarDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDFSActionPerformed
         // TODO add your handling code here:
-        String palabra = text.getText();
-        Pila posiciones = sopaletras.buscarDFS(palabra);
-        if (posiciones.vacia()){
-            JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+        if (this.sopaletras.isSopaArmada()){
+            String palabra = text.getText();
+            if (validar.palabraValida(palabra)){
+                long start = System.nanoTime();
+                Pila posiciones = sopaletras.buscarDFS(palabra);
+                if (posiciones.vacia()){
+                    JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+                }
+                else{
+                    func.colorReset();
+                    func.colorearLetras(posiciones, -1);}
+                text.setText("");
+                long end = System.nanoTime() - start;
+                double endMilli = end / (double) 10000000;
+                tiempo.setText(String.format("%.4f", endMilli));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Palabra no válida");
+            }
         }
-        else{
-            func.colorReset();
-            func.colorearLetras(posiciones, -1);}
-        text.setText("");
     }//GEN-LAST:event_buscarDFSActionPerformed
 
     private void DicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, sopaletras.getDiccionario().getListaPalabras());
+        if (this.sopaletras.isSopaArmada()){
+        JOptionPane.showMessageDialog(null, sopaletras.getDiccionario().getListaPalabras());}
     }//GEN-LAST:event_DicActionPerformed
 
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
         // TODO add your handling code here:
-        String palabra = text.getText();
-        Pila posiciones = sopaletras.buscarBFS(palabra);
-        if (posiciones.vacia()){
-            JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+        if (this.sopaletras.isSopaArmada()){
+            String palabra = text.getText();
+            if (validar.palabraValida(palabra)){
+                long start = System.nanoTime();
+                Pila posiciones = sopaletras.buscarBFS(palabra);
+                if (posiciones.vacia()){
+                    JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+                }
+                else{
+                    func.colorReset();
+                    func.colorearLetras(posiciones, -1);}
+                text.setText("");
+                long end = System.nanoTime() - start;
+                double endMilli = end / (double) 10000000;
+                tiempo.setText(String.format("%.4f", endMilli));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Palabra no válida");
+            }
         }
-        else{
-            func.colorReset();
-            func.colorearLetras(posiciones, -1);}
-        text.setText("");
     }//GEN-LAST:event_buscarBFSActionPerformed
 
     private void allBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBFSActionPerformed
         // TODO add your handling code here:
-        func.colorReset();
-        for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
-            Pila posiciones = sopaletras.buscarBFS(sopaletras.getDiccionario().getListaPalabras()[i]);
-            if (!posiciones.vacia()){
-               func.colorearLetras(posiciones, i); 
+        if (this.sopaletras.isSopaArmada()){
+            func.colorReset();
+            long start = System.nanoTime();
+            String [] palabras = sopaletras.getDiccionario().getListaPalabras().split("\r\n");
+            for (int i = 0; i < palabras.length; i++){
+                Pila posiciones = sopaletras.buscarBFS(palabras[i]);
+                if (!posiciones.vacia()){
+                   func.colorearLetras(posiciones, i); 
+                }
             }
+            long end = System.nanoTime() - start;
+            double endMilli = end / (double) 10000000;
+            tiempo.setText(String.format("%.4f", endMilli));
         }
     }//GEN-LAST:event_allBFSActionPerformed
 
     private void allDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDFSActionPerformed
         // TODO add your handling code here:
-        func.colorReset();
-        for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
-            Pila posiciones = sopaletras.buscarDFS(sopaletras.getDiccionario().getListaPalabras()[i]);
-            if (!posiciones.vacia()){
-               func.colorearLetras(posiciones, i); 
+        if (this.sopaletras.isSopaArmada()){
+            func.colorReset();
+            long start = System.nanoTime();
+            String [] palabras = sopaletras.getDiccionario().getListaPalabras().split("\r\n");
+            for (int i = 0; i < palabras.length; i++){
+                Pila posiciones = sopaletras.buscarDFS(palabras[i]);
+                if (!posiciones.vacia()){
+                   func.colorearLetras(posiciones, i); 
+                }
             }
+            long end = System.nanoTime() - start;
+            double endMilli = end / (double) 10000000;
+            tiempo.setText(String.format("%.4f", endMilli));
         }
     }//GEN-LAST:event_allDFSActionPerformed
+
+    private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempoActionPerformed
+
+    private void agregarDicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDicActionPerformed
+        // TODO add your handling code here:
+        if(this.sopaletras.isSopaArmada()){
+            String palabra = JOptionPane.showInputDialog("Inserte una Palabra");
+            if (validar.palabraValida(palabra)){
+                sopaletras.getDiccionario().agregarPalabra(palabra);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Palabra no válida");
+            }
+        }
+    }//GEN-LAST:event_agregarDicActionPerformed
 
     /**
      * @param args the command line arguments
@@ -546,6 +640,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField V8;
     private javax.swing.JTextField V9;
     private javax.swing.JButton abrirTXT;
+    private javax.swing.JButton agregarDic;
     private javax.swing.JToggleButton allBFS;
     private javax.swing.JToggleButton allDFS;
     private javax.swing.JToggleButton buscarBFS;
@@ -553,7 +648,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton guardarTXT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField text;
+    private javax.swing.JTextField tiempo;
     // End of variables declaration//GEN-END:variables
 }
