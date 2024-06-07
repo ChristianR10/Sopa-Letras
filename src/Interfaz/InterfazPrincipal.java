@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -271,6 +272,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void abrirTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirTXTActionPerformed
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("archivos de texto", "txt");
+        fc.setFileFilter(filter);
         int selection = fc.showOpenDialog(this);
         
         if (selection == JFileChooser.APPROVE_OPTION){
@@ -310,6 +313,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void buscarDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDFSActionPerformed
         // TODO add your handling code here:
         String palabra = text.getText();
+        long start = System.nanoTime();
         Pila posiciones = sopaletras.buscarDFS(palabra);
         if (posiciones.vacia()){
             JOptionPane.showMessageDialog(null, "Palabra no encontrada");
@@ -318,6 +322,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             func.colorReset();
             func.colorearLetras(posiciones, -1);}
         text.setText("");
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
     }//GEN-LAST:event_buscarDFSActionPerformed
 
     private void DicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicActionPerformed
@@ -327,6 +334,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
         // TODO add your handling code here:
+        long start = System.nanoTime();
         String palabra = text.getText();
         Pila posiciones = sopaletras.buscarBFS(palabra);
         if (posiciones.vacia()){
@@ -336,28 +344,39 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             func.colorReset();
             func.colorearLetras(posiciones, -1);}
         text.setText("");
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
     }//GEN-LAST:event_buscarBFSActionPerformed
 
     private void allBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBFSActionPerformed
         // TODO add your handling code here:
         func.colorReset();
+        long start = System.nanoTime();        
         for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
             Pila posiciones = sopaletras.buscarBFS(sopaletras.getDiccionario().getListaPalabras()[i]);
             if (!posiciones.vacia()){
                func.colorearLetras(posiciones, i); 
             }
         }
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
     }//GEN-LAST:event_allBFSActionPerformed
 
     private void allDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDFSActionPerformed
         // TODO add your handling code here:
         func.colorReset();
+        long start = System.nanoTime();
         for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
             Pila posiciones = sopaletras.buscarDFS(sopaletras.getDiccionario().getListaPalabras()[i]);
             if (!posiciones.vacia()){
                func.colorearLetras(posiciones, i); 
             }
         }
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
     }//GEN-LAST:event_allDFSActionPerformed
 
     /**
