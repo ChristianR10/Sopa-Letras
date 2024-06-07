@@ -12,6 +12,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+<<<<<<< Updated upstream
+=======
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -124,6 +129,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void abrirTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirTXTActionPerformed
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("archivos de texto", "txt");
+        fc.setFileFilter(filter);
         int selection = fc.showOpenDialog(this);
         
         if (selection == JFileChooser.APPROVE_OPTION){
@@ -157,11 +164,28 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
         String palabra = textBFS.getText();
         Pila posiciones = sopaletras.buscarBFS(palabra);
         posiciones.imprimirInv();
         textBFS.setText("");
     }//GEN-LAST:event_buscarBFSActionPerformed
+=======
+        long start = System.nanoTime();
+        String palabra = text.getText();
+        Pila posiciones = sopaletras.buscarDFS(palabra);
+        if (posiciones.vacia()){
+            JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+        }
+        else{
+            func.colorReset();
+            func.colorearLetras(posiciones, -1);}
+        text.setText("");
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
+    }//GEN-LAST:event_buscarDFSActionPerformed
+>>>>>>> Stashed changes
 
     private void DicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicActionPerformed
         // TODO add your handling code here:
@@ -170,16 +194,64 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
         
         String cadena = "";
         for (int i = 0; i<sopaletras.getNumFilas();i++){
             for (int j = 0; j < sopaletras.getNumCol();j++){
                 cadena += sopaletras.getLetraSopa()[i][j] + "   ";
+=======
+        long start = System.nanoTime();
+        String palabra = text.getText();
+        Pila posiciones = sopaletras.buscarBFS(palabra);
+        if (posiciones.vacia()){
+            JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+        }
+        else{
+            func.colorReset();
+            func.colorearLetras(posiciones, -1);}
+        text.setText("");
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
+    }//GEN-LAST:event_buscarBFSActionPerformed
+
+    private void allBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBFSActionPerformed
+        // TODO add your handling code here:
+        long start = System.nanoTime();
+        func.colorReset();
+        for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
+            Pila posiciones = sopaletras.buscarBFS(sopaletras.getDiccionario().getListaPalabras()[i]);
+            if (!posiciones.vacia()){
+               func.colorearLetras(posiciones, i); 
+>>>>>>> Stashed changes
             }
             cadena += "\n\n";
         }
+<<<<<<< Updated upstream
         JOptionPane.showMessageDialog(null, cadena);
     }//GEN-LAST:event_jButton1ActionPerformed
+=======
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
+    }//GEN-LAST:event_allBFSActionPerformed
+
+    private void allDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDFSActionPerformed
+        // TODO add your handling code here:
+        long start = System.nanoTime();
+        func.colorReset();
+        for (int i = 0; i < sopaletras.getDiccionario().getListaPalabras().length; i++){
+            Pila posiciones = sopaletras.buscarDFS(sopaletras.getDiccionario().getListaPalabras()[i]);
+            if (!posiciones.vacia()){
+               func.colorearLetras(posiciones, i); 
+            }
+        }
+        long end = System.nanoTime() - start;
+        double endMilli = end / (double) 10000000;
+        JOptionPane.showMessageDialog(null, String.format("Busqueda procesada en %.7f milisegundos", endMilli));
+    }//GEN-LAST:event_allDFSActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments

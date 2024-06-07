@@ -26,8 +26,16 @@ public class Busqueda_DFS {
         this.CopiaInvertida = new Pila();
         this.WordFound = false;
     }
+
     public Pila BuscarDFS(Grafo G, String Palabra){
-        //Inicializo
+        /**
+        * Este método recibe un grafo y una palabra en string, y la búsqueda por un método de recorrido de árbol DFS
+        * @param Grafo Grafo de la sopa de letras, donde se buscará la palabra
+        * @param Palabra String de la palabra a buscar
+        * 
+        * @return Devuelve una pila con las posiciones ordenadas de las letras de la palabra buscada, si es encontrada,
+        * en su defecto, devuelve una lista vacía
+        */
         this.SopaDeLetras = G;
         Vertice Iter = this.SopaDeLetras.getFirst();
         this.Palabra.apilarPalabraInv(Palabra);
