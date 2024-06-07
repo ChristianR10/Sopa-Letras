@@ -8,8 +8,10 @@ package Sopa_Letras;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author cgrc1
+ * Clase diccionario
+ * Almacena toda la informacion proveniente del archivo txt (palabras y letras)
+ * @author Christian Ramos
+ * @version 1.0
  */
 public class Diccionario {
     private String [] ListaLetras;
@@ -60,5 +62,5 @@ public class Diccionario {
         this.ListaPalabras = ListaPalabras;
     }
 
-   
+   //hello
 }
