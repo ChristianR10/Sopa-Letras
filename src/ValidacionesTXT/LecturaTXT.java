@@ -39,7 +39,7 @@ public class LecturaTXT {
     //funcion para construir un nuevo txt en base a modificaciones
     //(realizar si hay modificaciones en la validacion o si se agrega una nueva palabra)
 
-    public String nuevoTXT (String TxT){
+    public String modificarTXT (String TxT){
         String palabras = palabrasCorregidas(TxT);
         String letras = letrasCorregidas (TxT);
         String txt = "dic\r\n" + palabrasCorregidas(palabras) +"\r\n/dic\r\ntab\r\n" + letrasCorregidas (letras) + "\r\n/tab";
@@ -49,7 +49,10 @@ public class LecturaTXT {
     //funcion para verificar si una palabra es valida
     //que solo tenga letras, no tenga acentos, min 3 letras y eso
     public boolean palabraValida (String palabra){
-        return true;
+        boolean z = true;
+        if ("".equals(palabra)){
+            z=false;}
+        return z;
     }
     
 }

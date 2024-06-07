@@ -58,7 +58,7 @@ public class Diccionario {
             JOptionPane.showMessageDialog(null, "La palabra ya se encuentra en el diccionario");
         }
         else{
-            this.ListaPalabras += palabra.toUpperCase() + "\r\n";
+            this.ListaPalabras += palabra.toUpperCase()+"\r\n";
             JOptionPane.showMessageDialog(null, "Palabra agregada al diccionario");
         }
     }
@@ -74,6 +74,10 @@ public class Diccionario {
             }
         }
         return encontrado;
+    }
+    
+    public String generarTXT (){
+        return "dic\r\n" + this.ListaPalabras +"/dic\r\ntab\r\n" + this.ListaLetras + "\r\n/tab";
     }
 
     //getter and setter

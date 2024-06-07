@@ -9,6 +9,7 @@ import ValidacionesTXT.*;
 import Sopa_Letras.SopaLetras;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -26,18 +27,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
      */
     SopaLetras sopaletras;
     funcionesInterfaz func;
-    LecturaTXT validar;
-    public InterfazPrincipal(SopaLetras sopaletras) {
+    LecturaTXT archivotxt;
+    public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.sopaletras = sopaletras;
         this.func = new funcionesInterfaz(this);
-        this.validar = new LecturaTXT();
-        
-    }
-
-    private InterfazPrincipal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.archivotxt = new LecturaTXT();
+        this.sopaletras = new SopaLetras (4,4);
     }
 
     /**
@@ -51,7 +47,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         abrirTXT = new javax.swing.JButton();
-        text = new javax.swing.JTextField();
+        palabra = new javax.swing.JTextField();
         buscarDFS = new javax.swing.JToggleButton();
         Dic = new javax.swing.JButton();
         V4 = new javax.swing.JTextField();
@@ -94,12 +90,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(abrirTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        text.addActionListener(new java.awt.event.ActionListener() {
+        palabra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textActionPerformed(evt);
+                palabraActionPerformed(evt);
             }
         });
-        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
+        jPanel1.add(palabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
 
         buscarDFS.setText("DFS");
         buscarDFS.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +258,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jPanel1.add(buscarBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 80, -1));
 
         guardarTXT.setText("Guardar TXT");
+        guardarTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarTXTActionPerformed(evt);
+            }
+        });
         jPanel1.add(guardarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         agregarDic.setText("Agregar");
@@ -322,119 +323,55 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                     valor = fr.read();
                 }
                 //JOptionPane.showMessageDialog(null, cadena);
-                
-                if(validar.comprobacionTXT(cadena)==0){
-                    this.sopaletras.armarSopa(cadena);
-                    func.mostrarLetras();
-                    func.colorReset();
-                }
-                else if (validar.comprobacionTXT(cadena)==1){
-                    String cadenaNueva = validar.nuevoTXT(cadena);
-                    this.sopaletras.armarSopa(cadenaNueva);
-                    func.mostrarLetras();
-                    func.colorReset ();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Archivo de texto no válido");
+                switch (archivotxt.comprobacionTXT(cadena)) {
+                    case 0 -> {
+                        this.sopaletras = new SopaLetras(4, 4);
+                        this.sopaletras.armarSopa(cadena);
+                        func.mostrarLetras();
+                        func.colorReset();
+                    }
+                    case 1 -> {
+                        String cadenaNueva = archivotxt.modificarTXT(cadena);
+                        this.sopaletras = new SopaLetras(4, 4);
+                        this.sopaletras.armarSopa(cadenaNueva);
+                        func.mostrarLetras();
+                        func.colorReset ();
+                    }
+                    case 2 -> JOptionPane.showMessageDialog(null, "Archivo de texto no válido");
                 }
                 
             }
-            catch (IOException el){el.printStackTrace();}
+            catch (IOException el){}
         }
     }//GEN-LAST:event_abrirTXTActionPerformed
 
-    private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
+    private void palabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textActionPerformed
+    }//GEN-LAST:event_palabraActionPerformed
 
     private void buscarDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDFSActionPerformed
-        // TODO add your handling code here:
-        if (this.sopaletras.isSopaArmada()){
-            String palabra = text.getText();
-            if (validar.palabraValida(palabra)){
-                long start = System.nanoTime();
-                Pila posiciones = sopaletras.buscarDFS(palabra);
-                if (posiciones.vacia()){
-                    JOptionPane.showMessageDialog(null, "Palabra no encontrada");
-                }
-                else{
-                    func.colorReset();
-                    func.colorearLetras(posiciones, -1);}
-                text.setText("");
-                long end = System.nanoTime() - start;
-                double endMilli = end / (double) 10000000;
-                tiempo.setText(String.format("%.4f", endMilli));
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Palabra no válida");
-            }
-        }
+        func.buscarUna("DFS");
     }//GEN-LAST:event_buscarDFSActionPerformed
 
     private void DicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicActionPerformed
         // TODO add your handling code here:
         if (this.sopaletras.isSopaArmada()){
-        JOptionPane.showMessageDialog(null, sopaletras.getDiccionario().getListaPalabras());}
+            JOptionPane.showMessageDialog(null, sopaletras.getDiccionario().getListaPalabras());}
+        else {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo de texto");
+        }
     }//GEN-LAST:event_DicActionPerformed
 
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
-        // TODO add your handling code here:
-        if (this.sopaletras.isSopaArmada()){
-            String palabra = text.getText();
-            if (validar.palabraValida(palabra)){
-                long start = System.nanoTime();
-                Pila posiciones = sopaletras.buscarBFS(palabra);
-                if (posiciones.vacia()){
-                    JOptionPane.showMessageDialog(null, "Palabra no encontrada");
-                }
-                else{
-                    func.colorReset();
-                    func.colorearLetras(posiciones, -1);}
-                text.setText("");
-                long end = System.nanoTime() - start;
-                double endMilli = end / (double) 10000000;
-                tiempo.setText(String.format("%.4f", endMilli));
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Palabra no válida");
-            }
-        }
+        func.buscarUna("BFS");
     }//GEN-LAST:event_buscarBFSActionPerformed
 
     private void allBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBFSActionPerformed
-        // TODO add your handling code here:
-        if (this.sopaletras.isSopaArmada()){
-            func.colorReset();
-            long start = System.nanoTime();
-            String [] palabras = sopaletras.getDiccionario().getListaPalabras().split("\r\n");
-            for (int i = 0; i < palabras.length; i++){
-                Pila posiciones = sopaletras.buscarBFS(palabras[i]);
-                if (!posiciones.vacia()){
-                   func.colorearLetras(posiciones, i); 
-                }
-            }
-            long end = System.nanoTime() - start;
-            double endMilli = end / (double) 10000000;
-            tiempo.setText(String.format("%.4f", endMilli));
-        }
+        func.buscarTodas("BFS");
     }//GEN-LAST:event_allBFSActionPerformed
 
     private void allDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDFSActionPerformed
-        // TODO add your handling code here:
-        if (this.sopaletras.isSopaArmada()){
-            func.colorReset();
-            long start = System.nanoTime();
-            String [] palabras = sopaletras.getDiccionario().getListaPalabras().split("\r\n");
-            for (int i = 0; i < palabras.length; i++){
-                Pila posiciones = sopaletras.buscarDFS(palabras[i]);
-                if (!posiciones.vacia()){
-                   func.colorearLetras(posiciones, i); 
-                }
-            }
-            long end = System.nanoTime() - start;
-            double endMilli = end / (double) 10000000;
-            tiempo.setText(String.format("%.4f", endMilli));
-        }
+        func.buscarTodas("DFS");
     }//GEN-LAST:event_allDFSActionPerformed
 
     private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
@@ -445,14 +382,36 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.sopaletras.isSopaArmada()){
             String palabra = JOptionPane.showInputDialog("Inserte una Palabra");
-            if (validar.palabraValida(palabra)){
+            if (archivotxt.palabraValida(palabra)){
                 sopaletras.getDiccionario().agregarPalabra(palabra);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Palabra no válida");
             }
         }
+        else {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo de texto");
+        }
     }//GEN-LAST:event_agregarDicActionPerformed
+
+    private void guardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarTXTActionPerformed
+        // TODO add your handling code here:
+        if(this.sopaletras.isSopaArmada()){
+            JFileChooser fc = new JFileChooser();
+            int selection = fc.showSaveDialog(this);
+            if (selection == JFileChooser.APPROVE_OPTION){
+                File fichero = fc.getSelectedFile();
+                try (FileWriter fw = new FileWriter(fichero)){
+                    fw.write(sopaletras.getDiccionario().generarTXT());
+                }
+                catch (IOException el){
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo de texto");
+        }
+    }//GEN-LAST:event_guardarTXTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,10 +444,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfazPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new InterfazPrincipal().setVisible(true);
         });
     }
     //getter and setter
@@ -497,129 +454,77 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         return V0;
     }
 
-    public void setV0(JTextField V0) {
-        this.V0 = V0;
-    }
-
     public JTextField getV1() {
         return V1;
-    }
-
-    public void setV1(JTextField V1) {
-        this.V1 = V1;
     }
 
     public JTextField getV10() {
         return V10;
     }
 
-    public void setV10(JTextField V10) {
-        this.V10 = V10;
-    }
-
     public JTextField getV11() {
         return V11;
-    }
-
-    public void setV11(JTextField V11) {
-        this.V11 = V11;
     }
 
     public JTextField getV12() {
         return V12;
     }
 
-    public void setV12(JTextField V12) {
-        this.V12 = V12;
-    }
-
     public JTextField getV13() {
         return V13;
-    }
-
-    public void setV13(JTextField V13) {
-        this.V13 = V13;
     }
 
     public JTextField getV14() {
         return V14;
     }
 
-    public void setV14(JTextField V14) {
-        this.V14 = V14;
-    }
-
     public JTextField getV15() {
         return V15;
-    }
-
-    public void setV15(JTextField V15) {
-        this.V15 = V15;
     }
 
     public JTextField getV2() {
         return V2;
     }
 
-    public void setV2(JTextField V2) {
-        this.V2 = V2;
-    }
-
     public JTextField getV3() {
         return V3;
-    }
-
-    public void setV3(JTextField V3) {
-        this.V3 = V3;
     }
 
     public JTextField getV4() {
         return V4;
     }
 
-    public void setV4(JTextField V4) {
-        this.V4 = V4;
-    }
-
     public JTextField getV5() {
         return V5;
-    }
-
-    public void setV5(JTextField V5) {
-        this.V5 = V5;
     }
 
     public JTextField getV6() {
         return V6;
     }
 
-    public void setV6(JTextField V6) {
-        this.V6 = V6;
-    }
-
     public JTextField getV7() {
         return V7;
-    }
-
-    public void setV7(JTextField V7) {
-        this.V7 = V7;
     }
 
     public JTextField getV8() {
         return V8;
     }
 
-    public void setV8(JTextField V8) {
-        this.V8 = V8;
-    }
-
     public JTextField getV9() {
         return V9;
     }
 
-    public void setV9(JTextField V9) {
-        this.V9 = V9;
+    public JTextField getTiempo() {
+        return tiempo;
     }
+
+
+    public JTextField getPalabra() {
+        return palabra;
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Dic;
@@ -652,7 +557,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField text;
+    private javax.swing.JTextField palabra;
     private javax.swing.JTextField tiempo;
     // End of variables declaration//GEN-END:variables
 }

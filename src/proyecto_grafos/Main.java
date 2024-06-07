@@ -8,8 +8,7 @@ public class Main {
 
     
     public static void main(String[] args) {
-        SopaLetras sopaletra = new SopaLetras (4,4);
-        InterfazPrincipal main = new InterfazPrincipal(sopaletra);
+        InterfazPrincipal main = new InterfazPrincipal();
         main.setVisible(true);
     }
 }

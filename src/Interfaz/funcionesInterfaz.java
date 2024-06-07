@@ -113,4 +113,73 @@ public class funcionesInterfaz {
         interfaz.getV15().setBackground(Color.decode("#FFFFFF"));
     }
     
+    public void buscarTodas(String fs){
+        if (interfaz.sopaletras.isSopaArmada()){
+            long start = System.nanoTime();
+            String palabrasEncontradas = "";
+            String palabrasNoEncontradas = "";
+            colorReset();
+            String [] palabras = interfaz.sopaletras.getDiccionario().getListaPalabras().split("\r\n");
+            for (int i = 0; i < palabras.length; i++){
+                Pila posiciones = null;
+                if ("BFS".equals(fs)){
+                    posiciones = interfaz.sopaletras.buscarBFS(palabras[i]);}
+                if ("DFS".equals(fs)){
+                    posiciones = interfaz.sopaletras.buscarDFS(palabras[i]);}
+                if (!posiciones.vacia()){
+                   colorearLetras(posiciones, i); 
+                   palabrasEncontradas += "\r\n     - " + palabras[i];
+                }
+                else {
+                    palabrasNoEncontradas += "\r\n     - " + palabras[i];
+                }
+            }
+        
+            long end = System.nanoTime() - start;
+            double endMilli = end / (double) 10000000;
+            interfaz.getTiempo().setText(String.format("%.4f", endMilli));
+            if ("".equals(palabrasEncontradas)){
+                JOptionPane.showMessageDialog(null, "No se encontro ninguna palabra");
+            }
+            else{
+                palabrasEncontradas = "Las palabras encontradas fueron:" + palabrasEncontradas;
+                if (!"".equals(palabrasNoEncontradas)){
+                    palabrasNoEncontradas = "\r\nLas palabras no encontradas fueron: " + palabrasNoEncontradas;}
+                JOptionPane.showMessageDialog(null, palabrasEncontradas + palabrasNoEncontradas);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo de texto");
+        }
+    }
+    
+    public void buscarUna (String fs){
+        if (interfaz.sopaletras.isSopaArmada()){
+            String palabra = interfaz.getPalabra().getText();
+            if (interfaz.archivotxt.palabraValida(palabra)){
+                long start = System.nanoTime();
+                Pila posiciones = null;
+                if ("BFS".equals(fs)){
+                    posiciones = interfaz.sopaletras.buscarBFS(palabra);}
+                if ("DFS".equals(fs)){
+                    posiciones = interfaz.sopaletras.buscarDFS(palabra);}
+                if (posiciones.vacia()){
+                    JOptionPane.showMessageDialog(null, "Palabra no encontrada");
+                }
+                else{
+                    colorReset();
+                    colorearLetras(posiciones, -1);}
+                    interfaz.getPalabra().setText("");
+                    long end = System.nanoTime() - start;
+                    double endMilli = end / (double) 10000000;
+                    interfaz.getTiempo().setText(String.format("%.4f", endMilli));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Palabra no válida");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo de texto");
+        }
+    }
 }
