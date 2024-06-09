@@ -1,8 +1,10 @@
+package Interfaz;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interfaz;
+
 
 import EDD.Pila;
 import ValidacionesTXT.*;
@@ -116,112 +118,96 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         V4.setEditable(false);
         V4.setBackground(new java.awt.Color(255, 255, 255));
         V4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V4.setForeground(new java.awt.Color(0, 0, 0));
         V4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 50, 50));
 
         V0.setEditable(false);
         V0.setBackground(new java.awt.Color(255, 255, 255));
         V0.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V0.setForeground(new java.awt.Color(0, 0, 0));
         V0.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 50, 50));
 
         V12.setEditable(false);
         V12.setBackground(new java.awt.Color(255, 255, 255));
         V12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V12.setForeground(new java.awt.Color(0, 0, 0));
         V12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, 50));
 
         V8.setEditable(false);
         V8.setBackground(new java.awt.Color(255, 255, 255));
         V8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V8.setForeground(new java.awt.Color(0, 0, 0));
         V8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 50, 50));
 
         V5.setEditable(false);
         V5.setBackground(new java.awt.Color(255, 255, 255));
         V5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V5.setForeground(new java.awt.Color(0, 0, 0));
         V5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 50, 50));
 
         V1.setEditable(false);
         V1.setBackground(new java.awt.Color(255, 255, 255));
         V1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V1.setForeground(new java.awt.Color(0, 0, 0));
         V1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 50, 50));
 
         V13.setEditable(false);
         V13.setBackground(new java.awt.Color(255, 255, 255));
         V13.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V13.setForeground(new java.awt.Color(0, 0, 0));
         V13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 50, 50));
 
         V9.setEditable(false);
         V9.setBackground(new java.awt.Color(255, 255, 255));
         V9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V9.setForeground(new java.awt.Color(0, 0, 0));
         V9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 50, 50));
 
         V6.setEditable(false);
         V6.setBackground(new java.awt.Color(255, 255, 255));
         V6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V6.setForeground(new java.awt.Color(0, 0, 0));
         V6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 50, 50));
 
         V2.setEditable(false);
         V2.setBackground(new java.awt.Color(255, 255, 255));
         V2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V2.setForeground(new java.awt.Color(0, 0, 0));
         V2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 50, 50));
 
         V14.setEditable(false);
         V14.setBackground(new java.awt.Color(255, 255, 255));
         V14.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V14.setForeground(new java.awt.Color(0, 0, 0));
         V14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 50, 50));
 
         V10.setEditable(false);
         V10.setBackground(new java.awt.Color(255, 255, 255));
         V10.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V10.setForeground(new java.awt.Color(0, 0, 0));
         V10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 50, 50));
 
         V7.setEditable(false);
         V7.setBackground(new java.awt.Color(255, 255, 255));
         V7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V7.setForeground(new java.awt.Color(0, 0, 0));
         V7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 50, 50));
 
         V3.setEditable(false);
         V3.setBackground(new java.awt.Color(255, 255, 255));
         V3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V3.setForeground(new java.awt.Color(0, 0, 0));
         V3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 50, 50));
 
         V15.setEditable(false);
         V15.setBackground(new java.awt.Color(255, 255, 255));
         V15.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V15.setForeground(new java.awt.Color(0, 0, 0));
         V15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V15, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 50, 50));
 
         V11.setEditable(false);
         V11.setBackground(new java.awt.Color(255, 255, 255));
         V11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        V11.setForeground(new java.awt.Color(0, 0, 0));
         V11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(V11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 50, 50));
 
