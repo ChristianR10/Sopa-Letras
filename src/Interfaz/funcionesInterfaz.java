@@ -1,12 +1,9 @@
-package Interfaz;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Interfaz;
 
-
-import Interfaz.InterfazPrincipal;
 import EDD.Pila;
 import java.awt.Color;
 import java.util.Random;
@@ -159,7 +156,9 @@ public class funcionesInterfaz {
     public void buscarUna (String fs){
         if (interfaz.sopaletras.isSopaArmada()){
             String palabra = interfaz.getPalabra().getText();
-            if (interfaz.archivotxt.palabraValida(palabra)){
+            palabra = palabra.toUpperCase();
+            palabra = interfaz.archivotxt.palabraValida(palabra);
+            if (palabra != ""){
                 long start = System.nanoTime();
                 Pila posiciones = null;
                 if ("BFS".equals(fs)){
