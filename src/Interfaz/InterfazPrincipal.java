@@ -328,7 +328,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 String txtArreglado = archivotxt.comprobacionTXT(cadena);
                 
                 if("".equals(txtArreglado)){
-                    JOptionPane.showMessageDialog(null, "Archivo de texto no válido");
+                    //JOptionPane.showMessageDialog(null, "Archivo de texto no válido");
                 }else{
                     this.sopaletras = new SopaLetras(4, 4);
                     this.sopaletras.armarSopa(txtArreglado);

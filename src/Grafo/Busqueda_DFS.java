@@ -3,8 +3,11 @@ package Grafo;
 import EDD.Pila;
 
 /**
- *
+ * Clase Busqueda
+ * Incluye lo referente a la metodología de búsqueda de palabras en el grafo (DFS)
+ * Esta clase depende de las clases Sopa_Letras, Pila, Arista, Grafo y Vertice
  * @author Andrés Rojas
+ * @version 1.0
  */
 public class Busqueda_DFS {
     private Pila Palabra;
@@ -14,7 +17,8 @@ public class Busqueda_DFS {
     private Boolean WordFound;
 
     /**
-     *
+     * Constructor de la clase Búsqueda_DFS, no recibe parámetros de entrada ni se le asigna ningún
+     * valor a ningún parámetro
      */
     public Busqueda_DFS(){
         this.PalabraEncontrada = new Pila();

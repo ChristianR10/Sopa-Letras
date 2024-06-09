@@ -3,8 +3,8 @@ package Grafo;
 import EDD.Pila;
 
 /**
- * Clase Busqueda
- * Incluye lo referente a las dos metodologías de búsqueda de palabras en el grafo (BFS y DFS)
+ * Clase Busqueda_BFS
+ * Incluye lo referente a la metodología de búsqueda de palabras en el grafo (BFS)
  * Esta clase depende de las clases Sopa_Letras, Pila, Arista, Grafo y Vertice
  * @author Christian Ramos
  * @version 1.0
@@ -12,7 +12,7 @@ import EDD.Pila;
 public class Busqueda_BFS {
     
     /**
-     * Constructor de la clase Búsqueda, no recibe parámetros de entrada ni se le asigna ningún
+     * Constructor de la clase Búsqueda_BFS, no recibe parámetros de entrada ni se le asigna ningún
      * valor a ningún parámetro
      */
     public Busqueda_BFS() {

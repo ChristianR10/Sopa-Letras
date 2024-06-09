@@ -18,20 +18,17 @@ public class LecturaTXT {
     , 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     
     /**
-     * 
+     * Constructor de la clase LecturaTXT, no recibe parámetros de entrada ni se le asigna ningún
+     * valor a ningún parámetro
      */
     public LecturaTXT() {
     }
-    
-    //poner una funcion general con las validaciones y haga validadciones en el txt
-    //retorna 0 txt valido sin modificaciones
-    //retorna 1 txt valido con modificaciones menores
-    //retorna 2 txt no valido
-    
+   
     /**
      * Maneja todo el proceso de comprobación de la validez de un archivo txt
-     * @param txt
-     * @return Devuelve o un string válido de tanto la sopa de letras como todas las palabras, o un string vacío que representa que la palabra no es válida
+     * @param txt Variable de tipo string que incluye toda la lectura proveniente del txt
+     * @return Devuelve o un string válido de tanto la sopa de letras como todas las palabras, 
+     * o un string vacío que representa que la palabra no es válida
      */
     public String comprobacionTXT(String txt){
         txt = txt.toUpperCase();
@@ -86,11 +83,9 @@ public class LecturaTXT {
 
     }
     
-    //en caso de que haya que modificar algun detalle palabra (acento)o haya que anexar alguna, que esta funcion retorne la nueva cadena , 
-
     /**
      * Recibe un string con todas las palabras, procesa y elimina todas las palabras inválidas
-     * @param txt
+     * @param txt Variable de tipo string que incluye toda la lectura proveniente del txt
      * @return String de todas las palabras válidas para la sopa de letras, mínimo tres letras, mayúscula, sin carácteres especiales
      */
     public String palabrasCorregidas(String txt){
@@ -105,15 +100,13 @@ public class LecturaTXT {
                 PalabraNueva += PalabraCurrent + "\r\n";
             }
         }
-        //System.out.println(PalabraNueva);
         return PalabraNueva;
     }
     
-    //en caso de que haya que modificar las letras, que esta funcion lo retorne
 
     /**
      * Recibe un string con todas las letras que conforman la sopa de letras y verifica que todas las letras sean válidas
-     * @param txt
+     * @param txt Variable de tipo string que incluye toda la lectura proveniente del txt
      * @return Devuelve un string con toda las letras válidas para la sopa de letras, si alguna letra no es válida, devuelve un string vacío
      */
     public String letrasCorregidas (String txt){
@@ -165,12 +158,10 @@ public class LecturaTXT {
         return LetrasSinEspacios;
     }
     
-    //funcion para construir un nuevo txt en base a modificaciones
-    //(realizar si hay modificaciones en la validacion o si se agrega una nueva palabra)
 
     /**
      * Crea un string correcto modifico con solo palabras y letras válidas
-     * @param TxT
+     * @param TxT Variable de tipo string que incluye toda la lectura proveniente del txt
      * @return Devuelve un string con la sopa de letras y el diccionario arreglado en un solo string
      */
     public String modificarTXT (String TxT){
@@ -180,13 +171,11 @@ public class LecturaTXT {
         return txt;
     }
     
-    //funcion para verificar si una palabra es valida
-    //que solo tenga letras, no tenga acentos, min 3 letras y eso
 
     /**
      * Función que verifica que una palabra sea válida
-     * @param palabra
-     * @return Devuelve un string, si es vacío, la palabra no es válida, si devuelve una palabra de vuelta, es agregada al string
+     * @param palabra variable de tipo string que indica la palabra que se desee comprobar
+     * @return Devuelve un string: si es vacío, la palabra no es válida, si devuelve una palabra de vuelta, es agregada al string
      */
     public String palabraValida (String palabra){
         if(palabra.length() < 3 || palabra.length() > 16){
