@@ -175,10 +175,10 @@ public class funcionesInterfaz {
                 palabrasEncontradas = "Las palabras encontradas fueron:" + palabrasEncontradas;
                 if (!"".equals(palabrasNoEncontradas)){
                     palabrasNoEncontradas = "\r\nLas palabras no encontradas fueron: " + palabrasNoEncontradas;}
-                    JOptionPane.showMessageDialog(null, palabrasEncontradas + palabrasNoEncontradas);
                     long end = System.nanoTime() - start;
                     double endMilli = end / (double) 10000000;
                     interfaz.getTiempo().setText(String.format("%.4f", endMilli));
+                    JOptionPane.showMessageDialog(null, palabrasEncontradas + palabrasNoEncontradas);
             }
         }
         else {

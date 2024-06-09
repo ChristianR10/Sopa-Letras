@@ -404,8 +404,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             String palabra = JOptionPane.showInputDialog("Inserte una Palabra").toUpperCase();
             String palabraComprobada = archivotxt.palabraValida(palabra);
             if (!"".equals(palabraComprobada)){
-                palabra = archivotxt.palabrasCorregidas(palabra);
-                sopaletras.getDiccionario().agregarPalabra(palabra);
+                palabra = archivotxt.palabrasCorregidas(palabra).toUpperCase().split("\r\n")[0];
+                if (!sopaletras.getDiccionario().palabraEnDiccionario(palabra)){
+                    sopaletras.getDiccionario().agregarPalabra(palabra);}
+                else {
+                    JOptionPane.showMessageDialog(null, "La palabra ya se encuentra en el diccionario");
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Palabra no válida");
             }
