@@ -1,16 +1,14 @@
 package Sopa_Letras;
 
-/**
- * Clase SopaLetras
- * Incluye todo lo referente a la construcción de la sopa de letras, así como sus principales métodos y funciones
- * @author Christian Ramos
- * @version 1.0
- */
-
 import EDD.Pila;
 import Grafo.*;
 
-
+/**
+ * Clase SopaLetras
+ * Incluye todo lo referente a la construcción de la sopa de letras, así como sus principales métodos y funciones
+ * @author Christian Ramos y Andrés Rojas
+ * @version 1.0
+ */
 public class SopaLetras {
     
     /**
@@ -19,13 +17,14 @@ public class SopaLetras {
      * @param numCol indica la cantidad de columnas que posee la sopa de letras
      * @param numFilas indica la cantidad de filas que posee la sopa de letras
      * @param grafo variable de tipo grafo que indica el grafo formado por los vertices de la sopa de letras
+     * @param diccionario variable de tipo diccionario que guarda la informacion de la sopa (letras y palabras)
      * @param sopaArmada variable de tipo boolean que indica si la sopa de letras ya fue armada
      */
     
-    private char [][] LetraSopa; //Matriz usando las letras
-    private int [][] PosicioneSopa; //Matriz usando el numero de vertice
-    private int numCol; //Nro. Columnas de la matriz
-    private int numFilas; //Nro. Filas de la matriz
+    private char [][] LetraSopa; 
+    private int [][] PosicioneSopa; 
+    private int numCol; 
+    private int numFilas; 
     private Grafo grafo;
     private Diccionario diccionario;
     private boolean sopaArmada;
@@ -34,6 +33,7 @@ public class SopaLetras {
      * Constructor de la clase SopaLetras, recibe como entrada dos parámetros
      * @param x variable de tipo entero que indica el número de filas que se desea que posea la sopa de letras
      * @param y variable de tipo entero que indica el número de columnas que se desea que posea la sopa de letras
+     * @author Christian Ramos
      */
     public SopaLetras(int x, int y) {
         this.LetraSopa = new char [x][y];
@@ -46,14 +46,12 @@ public class SopaLetras {
     }
     
     /**
-     * Método que generar la sopa de letras. Recibe como parámetro un String ordenado con todas las letras
-     * y genera los vértices y aristas correspondientes
-     * @param cadena variable de tipo String que indica de forma ordenada todas las letras de 
-     * la sopa de letras separadas por ", "
+     * Método que genera la sopa de letras en base al archivo txt ingresado. 
+     * @param cadena variable de tipo String que incluye la lectura entera del txt
+     * @author Christian Ramos
      */
     public void armarSopa (String cadena){
         this.diccionario.LeerTxT(cadena);
-        //String [] letras = diccionario.getListaLetras();
         crearVertices(diccionario.getListaLetras(), grafo);
         crearAristas (grafo);
         this.sopaArmada = true;
@@ -62,8 +60,9 @@ public class SopaLetras {
     
     /**
      * Método auxiliar del método armarSopa que se encarga de agregar los vértices al grafo
-     * @param parts variable de tipo String que indica la letra que se desea que tenga el vértice como dato
+     * @param letras variable de tipo string que recibe todas las letras de la sopa
      * @param grafo variable de tipo grafo que indica la estructura grafo que posee la sopa de letras
+     * @author Christian Ramos
      */
     public void crearVertices (String letras, Grafo grafo){
         String [] parts = letras.split(",");
@@ -82,6 +81,7 @@ public class SopaLetras {
      * Método auxiliar del método armarSopa que se encarga de agregar las aristas al grafo dependiendo de las 
      * adyacencias de los vértices
      * @param grafo variable de tipo grafo que indica la estructura grafo que posee la sopa de letras
+     * @author Christian Ramos
      */
     public void crearAristas (Grafo grafo){
         for (int i = 0; i <numFilas; i++){
@@ -112,6 +112,7 @@ public class SopaLetras {
      * @param v variable de tipo entero que indica el número del vértice del que se desea conocer los 
      * adyacentes
      * @return String con todos los vértices adyacentes
+     * @author Christian Ramos
      */
     public String imprimirAdyacentes (int v){
         String cadena = "";
@@ -129,75 +130,128 @@ public class SopaLetras {
      * Función que busca una palabra en la sopa de letra usando la metodología BFS
      * @param palabra variable de tipo String que indica la palabra que se desea buscar
      * @return Pila ordenada con los distintos vértices donde se encuentran las letras de la palabra
+     * @author Christian Ramos
      */
     public Pila buscarBFS (String palabra){
         Busqueda_BFS buscarBFS = new Busqueda_BFS ();
         return buscarBFS.buscarBFS(this.grafo, palabra.toUpperCase());
     }
     
+    /**
+     * Función que busca una palabra en la sopa de letra usando la metodología DFS
+     * @param palabra variable de tipo String que indica la palabra que se desea buscar
+     * @return Pila ordenada con los distintos vértices donde se encuentran las letras de la palabra
+     * @author Andrés Rojas
+     */
     public Pila buscarDFS (String palabra){
         Busqueda_DFS buscarDFS = new Busqueda_DFS();
         return buscarDFS.BuscarDFS(this.grafo, palabra.toUpperCase());
     }
 
-    
-    //getter and setter
+
+    /**
+     * @return variable interna LetraSopa
+     */
     public char[][] getLetraSopa() {
         return LetraSopa;
     }
 
+    /**
+     * modifica la variable interna LetraSopa
+     * @param LetraSopa nueva variable de tipo matriz
+     */
     public void setLetraSopa(char[][] LetraSopa) {
         this.LetraSopa = LetraSopa;
     }
 
+    /**
+     * @return variable interna PosicioneSopa
+     */
     public int[][] getPosicioneSopa() {
         return PosicioneSopa;
     }
 
+    /**
+     * modifica la variable interna PosicioneSopa
+     * @param PosicioneSopa nueva variable de tipo matriz
+     */
     public void setPosicioneSopa(int[][] PosicioneSopa) {
         this.PosicioneSopa = PosicioneSopa;
     }
 
+    /**
+     * @return variable interna numCol
+     */
     public int getNumCol() {
         return numCol;
     }
 
+    /**
+     * modifica la variable interna numCol
+     * @param numCol nueva variable de tipo numCol
+     */
     public void setNumCol(int numCol) {
         this.numCol = numCol;
     }
 
+    /**
+     * @return variable interna numFilas
+     */
     public int getNumFilas() {
         return numFilas;
     }
 
+    /**
+     * modifica la variable interna numFilas
+     * @param numFilas nueva variable de tipo numFilas
+     */
     public void setNumFilas(int numFilas) {
         this.numFilas = numFilas;
     }
 
+    /**
+     * @return variable interna grafo
+     */
     public Grafo getGrafo() {
         return grafo;
     }
 
+    /**
+     * modifica la variable interna grafo
+     * @param grafo nueva variable de tipo grafo
+     */
     public void setGrafo(Grafo grafo) {
         this.grafo = grafo;
     }
 
+    /**
+     * @return variable interna diccionario
+     */
     public Diccionario getDiccionario() {
         return diccionario;
     }
 
+    /**
+     * modifica la variable interna diccionario
+     * @param diccionario nueva variable de tipo diccionario
+     */
     public void setDiccionario(Diccionario diccionario) {
         this.diccionario = diccionario;
     }  
 
+    /**
+     * @return variable interna sopaArmada
+     */
     public boolean isSopaArmada() {
         return sopaArmada;
     }
 
+    /**
+     * modifica la variable interna sopaArmada
+     * @param sopaArmada nueva variable de tipo boolean
+     */
     public void setSopaArmada(boolean sopaArmada) {
         this.sopaArmada = sopaArmada;
-    }
-    
-    
+    }  
 }
 

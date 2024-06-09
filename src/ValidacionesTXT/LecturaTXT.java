@@ -1,16 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ValidacionesTXT;
 
 /**
- *
- * @author cgrc1
+ * Clase LecturaTXT
+ * Se encarga de leer el txt ingresado y verifica que cumpla con los parámetros necesarios 
+ * para que el programa pueda ejecutarse correctamente
+ * @author Andrés Rojas y Massimo Restuccia
+ * @version 1.0
  */
+
 public class LecturaTXT {
+    /**
+     * @param LetrasValidas
+     */
     char LetrasValidas[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S'
     , 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    
+    /**
+     * 
+     */
     public LecturaTXT() {
     }
     
@@ -18,25 +25,32 @@ public class LecturaTXT {
     //retorna 0 txt valido sin modificaciones
     //retorna 1 txt valido con modificaciones menores
     //retorna 2 txt no valido
+    
+    /**
+     * 
+     * @param txt
+     * @return 
+     */
     public String comprobacionTXT(String txt){
+        txt = txt.toUpperCase();
         int InstanceOfDic = 0;
         int InstanceOfTab = 0;
         String txtFromDic;
         String txtFromTab;
-        InstanceOfDic = txt.indexOf("dic");
-        InstanceOfTab = txt.indexOf("tab");
+        InstanceOfDic = txt.indexOf("DIC");
+        InstanceOfTab = txt.indexOf("TAB");
         
         if(InstanceOfDic == -1 || InstanceOfTab == -1){
-            System.out.println("B");
+            //System.out.println("B");
             return "";
         } else{
             txtFromDic = txt.substring(InstanceOfDic + 3);
             txtFromTab = txt.substring(InstanceOfTab + 3);
-            InstanceOfDic = txtFromDic.indexOf("/dic");
-            InstanceOfTab = txtFromTab.indexOf("/tab");
+            InstanceOfDic = txtFromDic.indexOf("/DIC");
+            InstanceOfTab = txtFromTab.indexOf("/TAB");
             if(InstanceOfDic == -1 || InstanceOfTab == -1){
-                System.out.println(InstanceOfDic);
-                System.out.println(InstanceOfTab);
+                //System.out.println(InstanceOfDic);
+                //System.out.println(InstanceOfTab);
                 return "";
             }
         }
@@ -47,17 +61,23 @@ public class LecturaTXT {
         String letras = letrasCorregidas (txtFromTab);
         
         if(palabras == "" || letras == ""){
-            System.out.println(palabras);
-            System.out.println(letras);
+            //System.out.println(palabras);
+            //System.out.println(letras);
             return "";
         }
-        String TextoArreglado = "dic\r\n" + palabras +"\r\n/dic\r\ntab\r\n" + letras + "\r\n/tab";
+        String TextoArreglado = "dic\r\n" + palabras +"/dic\r\ntab\r\n" + letras + "\r\n/tab";
         return TextoArreglado;
         
 
     }
     
     //en caso de que haya que modificar algun detalle palabra (acento)o haya que anexar alguna, que esta funcion retorne la nueva cadena , 
+
+    /**
+     *
+     * @param txt
+     * @return
+     */
     public String palabrasCorregidas(String txt){
         txt = txt.replaceAll("/r", "");
         txt = txt.replaceAll(" ", "");
@@ -70,12 +90,17 @@ public class LecturaTXT {
                 PalabraNueva += PalabraCurrent + "\r\n";
             }
         }
-        System.out.println(PalabraNueva);
+        //System.out.println(PalabraNueva);
         return PalabraNueva;
     }
     
     //en caso de que haya que modificar las letras, que esta funcion lo retorne
 
+    /**
+     *
+     * @param txt
+     * @return
+     */
     public String letrasCorregidas (String txt){
         String LetrasSinEspacios = txt.replaceAll(" ", "");
         LetrasSinEspacios = LetrasSinEspacios.replaceAll("\n", "");
@@ -117,7 +142,7 @@ public class LecturaTXT {
             } 
             }
             if(letraValida == false){
-                System.out.println("Letra de sopa invalida");
+                //System.out.println("Letra de sopa invalida");
                 return "";
             }
             }
@@ -128,6 +153,11 @@ public class LecturaTXT {
     //funcion para construir un nuevo txt en base a modificaciones
     //(realizar si hay modificaciones en la validacion o si se agrega una nueva palabra)
 
+    /**
+     *
+     * @param TxT
+     * @return
+     */
     public String modificarTXT (String TxT){
         String palabras = palabrasCorregidas(TxT);
         String letras = letrasCorregidas (TxT);
@@ -137,10 +167,16 @@ public class LecturaTXT {
     
     //funcion para verificar si una palabra es valida
     //que solo tenga letras, no tenga acentos, min 3 letras y eso
+
+    /**
+     *
+     * @param palabra
+     * @return
+     */
     public String palabraValida (String palabra){
-        if(palabra.length() < 3){
-            System.out.println(palabra);
-            System.out.println("holo");
+        if(palabra.length() < 3 || palabra.length() > 16){
+            //System.out.println(palabra);
+            //System.out.println("holo");
             return "";
         }
         palabra = palabra.replaceAll("\r", "");
@@ -151,7 +187,7 @@ public class LecturaTXT {
             letraValida = false;
             for(int j = 0; j<this.LetrasValidas.length; j++){
                 if(palabra.charAt(i)==this.LetrasValidas[j]){
-                    System.out.println("AAA");
+                    //System.out.println("AAA");
                     letraValida = true;
                     break;
                 }
@@ -179,8 +215,8 @@ public class LecturaTXT {
             }
             }
             if(letraValida==false){
-                System.out.println(palabra.charAt(i));
-                System.out.println("Palabra no");
+                //System.out.println(palabra.charAt(i));
+                //System.out.println("Palabra no");
                 return "";
             }
         

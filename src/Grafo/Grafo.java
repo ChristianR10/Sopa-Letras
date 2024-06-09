@@ -82,27 +82,47 @@ public class Grafo {
         }
     }
 
-    //getter and setter
+    /**
+     * @return variable interna NumVer
+     */
     public int getNumVer() {
         return NumVer;
     }
 
+    /**
+     * modifica la variable interna NumVer
+     * @param NumVer nueva variable de tipo entero
+     */
     public void setNumVer(int NumVer) {
         this.NumVer = NumVer;
     }
 
+    /**
+     * @return variable interna first
+     */
     public Vertice getFirst() {
         return first;
     }
 
+    /**
+     * modifica la variable interna first
+     * @param first nueva variable de tipo vertice
+     */
     public void setFirst(Vertice first) {
         this.first = first;
     }
 
+    /**
+     * @return variable interna last
+     */
     public Vertice getLast() {
         return last;
     }
 
+    /**
+     * modifica la variable interna last
+     * @param last nueva variable de tipo vertice
+     */
     public void setLast(Vertice last) {
         this.last = last;
     }

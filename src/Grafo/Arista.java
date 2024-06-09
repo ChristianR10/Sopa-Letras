@@ -22,39 +22,65 @@ public class Arista {
      * Hay dos constructores, uno que recibe solo como entrada la variable Destino 
      * y otro que adicionalmente recibe la variable dato
      * en ambos casos, a next se le asigna null
+     * @param Destino variable de tipo entero que indica el número del vértice adyacente
      */
     public Arista(int Destino) {
         this.Destino = Destino;
         this.Next = null;
     }
 
+    /**
+     *
+     * @param Destino
+     * @param dato
+     */
     public Arista(int Destino, char dato) {
         this.Destino = Destino;
         this.dato = dato;
         this.Next = null;
     }
-    
-    //getter and setter
+
+    /**
+     * @return variable interna Destino
+     */
     public int getDestino() {
         return Destino;
     }
 
+    /**
+     * modifica la variable interna destino
+     * @param Destino nueva variable de tipo entero
+     */
     public void setDestino(int Destino) {
         this.Destino = Destino;
     }
 
+    /**
+     * @return variable interna 
+     */
     public Arista getNext() {
         return Next;
     }
 
+    /**
+     * modifica la variable interna next
+     * @param Next nueva variable de tipo arista
+     */
     public void setNext(Arista Next) {
         this.Next = Next;
     }
 
+    /**
+     * @return variable interna 
+     */
     public char getDato() {
         return dato;
     }
 
+    /**
+     * modifica la variable interna dato
+     * @param dato nueva variable de tipo char
+     */
     public void setDato(char dato) {
         this.dato = dato;
     }   

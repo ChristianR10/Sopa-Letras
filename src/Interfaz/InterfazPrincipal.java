@@ -1,11 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfaz;
 
-
-import EDD.Pila;
 import ValidacionesTXT.*;
 import Sopa_Letras.SopaLetras;
 import java.io.File;
@@ -18,8 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
- * @author cgrc1
+ * Interfaz grafica del proyecto
+ * @author Christian Ramos
+ * @version 1.0
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
 
@@ -29,6 +24,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     SopaLetras sopaletras;
     funcionesInterfaz func;
     LecturaTXT archivotxt;
+
+    /**
+     * Constructor de la interfaz. No recibe parametro de entrada
+     */
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -306,8 +305,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * boton que abre el JFileChooser  
+     */
     private void abrirTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirTXTActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("archivos de texto", "txt");
         fc.setFileFilter(filter);
@@ -323,7 +324,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                     cadena += (char) valor;
                     valor = fr.read();
                 }
-                //JOptionPane.showMessageDialog(null, cadena);
                 
                 String txtArreglado = archivotxt.comprobacionTXT(cadena);
                 
@@ -341,14 +341,23 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_abrirTXTActionPerformed
 
+    /**
+     * recuadro de texto para ingresar una palabra para la busqueda
+     */
     private void palabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_palabraActionPerformed
 
+    /**
+     * boton que busca una palabra usando la metodologia DFS
+     */
     private void buscarDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDFSActionPerformed
         func.buscarUna("DFS");
     }//GEN-LAST:event_buscarDFSActionPerformed
 
+    /**
+     * boton que muestra la lista de palabras del diccionario
+     */
     private void DicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicActionPerformed
         // TODO add your handling code here:
         if (this.sopaletras.isSopaArmada()){
@@ -358,28 +367,44 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DicActionPerformed
 
+    /**
+     * boton que busca una palabra usando la metodologia BFS
+     */
     private void buscarBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBFSActionPerformed
         func.buscarUna("BFS");
     }//GEN-LAST:event_buscarBFSActionPerformed
 
+    /**
+     * boton que busca todas las palabras usando la metodologia BFS
+     */
     private void allBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBFSActionPerformed
         func.buscarTodas("BFS");
     }//GEN-LAST:event_allBFSActionPerformed
 
+    /**
+     * boton que busca todas las palabras usando la metodologia DFS
+     */
     private void allDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDFSActionPerformed
         func.buscarTodas("DFS");
     }//GEN-LAST:event_allDFSActionPerformed
 
+    /**
+     * recuadro que muestra el cronometro
+     */
     private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tiempoActionPerformed
 
+    /**
+     * boton para agregar una palabra al diccionario
+     */
     private void agregarDicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDicActionPerformed
         // TODO add your handling code here:
         if(this.sopaletras.isSopaArmada()){
-            String palabra = JOptionPane.showInputDialog("Inserte una Palabra");
+            String palabra = JOptionPane.showInputDialog("Inserte una Palabra").toUpperCase();
             String palabraComprobada = archivotxt.palabraValida(palabra);
             if (!"".equals(palabraComprobada)){
+                palabra = archivotxt.palabrasCorregidas(palabra);
                 sopaletras.getDiccionario().agregarPalabra(palabra);
             }else{
                 JOptionPane.showMessageDialog(null, "Palabra no válida");
@@ -390,8 +415,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_agregarDicActionPerformed
 
+    /**
+     * boton para guardar el txt
+     */
     private void guardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarTXTActionPerformed
-        // TODO add your handling code here:
         if(this.sopaletras.isSopaArmada()){
             JFileChooser fc = new JFileChooser();
             int selection = fc.showSaveDialog(this);
@@ -409,9 +436,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_guardarTXTActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -444,77 +469,129 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             new InterfazPrincipal().setVisible(true);
         });
     }
-    //getter and setter
     
+    /**
+     * @return parametro interno V0
+     */
     public JTextField getV0() {
         return V0;
     }
 
+    /**
+     * @return parametro interno V1
+     */
     public JTextField getV1() {
         return V1;
     }
 
+    /**
+     * @return parametro interno V10
+     */
     public JTextField getV10() {
         return V10;
     }
 
+    /**
+     * @return parametro interno V11
+     */
     public JTextField getV11() {
         return V11;
     }
 
+    /**
+     * @return parametro interno V12
+     */
     public JTextField getV12() {
         return V12;
     }
 
+    /**
+     * @return parametro interno V13
+     */
     public JTextField getV13() {
         return V13;
     }
 
+    /**
+     * @return parametro interno V14
+     */
     public JTextField getV14() {
         return V14;
     }
 
+    /**
+     * @return parametro interno V15
+     */
     public JTextField getV15() {
         return V15;
     }
 
+    /**
+     * @return parametro interno V2
+     */
     public JTextField getV2() {
         return V2;
     }
 
+    /**
+     * @return parametro interno V3
+     */
     public JTextField getV3() {
         return V3;
     }
 
+    /**
+     * @return parametro interno V4
+     */
     public JTextField getV4() {
         return V4;
     }
 
+    /**
+     * @return parametro interno V5
+     */
     public JTextField getV5() {
         return V5;
     }
 
+    /**
+     * @return parametro interno V6
+     */
     public JTextField getV6() {
         return V6;
     }
 
+    /**
+     * @return parametro interno V7
+     */
     public JTextField getV7() {
         return V7;
     }
 
+    /**
+     * @return parametro interno V8
+     */
     public JTextField getV8() {
         return V8;
     }
 
+    /**
+     * @return parametro interno V9
+     */
     public JTextField getV9() {
         return V9;
     }
 
+    /**
+     * @return parametro interno tiempo
+     */
     public JTextField getTiempo() {
         return tiempo;
     }
 
-
+    /**
+     * @return parametro interno palabra
+     */
     public JTextField getPalabra() {
         return palabra;
     }

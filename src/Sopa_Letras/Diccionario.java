@@ -10,17 +10,21 @@ import javax.swing.JOptionPane;
  */
 public class Diccionario {
     /**
-     * @param ListaLetras array que guarda todas las letras de la sopa de letras
-     * @param ListaPalabras array que guarda todas las palabras del diccionario
+     * @param ListaLetras string que guarda todas las letras de la sopa de letras
+     * @param ListaPalabras string que guarda todas las palabras del diccionario
      */
     private String ListaLetras;
     private String ListaPalabras;
     
+    /**
+     * Constructor de la clase diccionario
+     * No recibe parámetro de entrada ni asigna ningun valor
+     */
     public Diccionario(){
     }
 
     /**
-     * funcion que en base a la lectura del txt guarda las letras y plabras
+     * funcion que en base a la lectura del txt guarda las letras y plabras en los respectivos parámetros internos
      * @param cadena variable de tipo string que contiene toda la informacion del txt
      */
     public void LeerTxT(String cadena){
@@ -35,11 +39,7 @@ public class Diccionario {
     public void LeerLetras (String cadena){
         String [] parts = cadena.split("tab\r\n");
         parts = parts[1].split("\r\n/");
-        //parts = parts[0].split(",");
         this.ListaLetras = parts[0].toUpperCase(); 
-        /*for (int i = 1; i < ListaLetras.length;i++){
-            ListaLetras[i] = ListaLetras[i].toUpperCase();
-        }*/
     }
     
     /**
@@ -52,7 +52,11 @@ public class Diccionario {
         this.ListaPalabras = parts[0].toUpperCase();
     }
     
-    
+    /**
+     * metodo que permite guardar una nueva palabra al diccionario. 
+     * En caso de ya encontrarse en el diccionario, se lo notifica al usuario
+     * @param palabra variable de tipo string que indica la nueva palabra que se desee agregar
+     */
     public void agregarPalabra (String palabra){
         if (palabraEnDiccionario(palabra)){
             JOptionPane.showMessageDialog(null, "La palabra ya se encuentra en el diccionario");
@@ -63,6 +67,11 @@ public class Diccionario {
         }
     }
     
+    /**
+     * funcion de tipo boolean que indica si una palabra ya se encuentra en el diccionario
+     * @param palabra variable de tipo string que indica la palabra que se desee buscar
+     * @return true si la palabra se encuentra en el diccionario, false en caso contrario
+     */
     public boolean palabraEnDiccionario (String palabra){
         palabra = palabra.toUpperCase();
         boolean encontrado = false;
@@ -76,23 +85,41 @@ public class Diccionario {
         return encontrado;
     }
     
+    /**
+     * metodo que genera un nuevo string para crear un txt en base a la informacion interna del diccionario
+     * @return string en el formato solicitado para el txt
+     */
     public String generarTXT (){
         return "dic\r\n" + this.ListaPalabras +"/dic\r\ntab\r\n" + this.ListaLetras + "\r\n/tab";
     }
 
-    //getter and setter
+
+    /**
+     * @return variable interna ListaLetras
+     */
     public String getListaLetras() {
         return ListaLetras;
     }
 
+    /**
+     * modifica la variable interna ListaLetras 
+     * @param ListaLetras nueva variable de tipo string
+     */
     public void setListaLetras(String ListaLetras) {
         this.ListaLetras = ListaLetras;
     }
 
+    /**
+     * @return variable interna ListaPalabras
+     */
     public String getListaPalabras() {
         return ListaPalabras;
     }
 
+    /**
+     * modifica la variable interna ListaPalabras
+     * @param ListaPalabras nueva variable de tipo string
+     */
     public void setListaPalabras(String ListaPalabras) {
         this.ListaPalabras = ListaPalabras;
     }

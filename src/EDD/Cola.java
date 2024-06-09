@@ -8,15 +8,14 @@ import javax.swing.JOptionPane;
  * Esta clase depende de la clase Nodo
  * @author Christian Ramos
  * @version 1.0
+ * @Deprecated esta clase no fue utilizada finalmente en el proyecto
  */
-
 public class Cola {
     /**
     * @param first variable privada de tipo Nodo que apunta al primer elemento insertado en la cola
     * @param last variable privada de tipo Nodo que apunta al último elemento insertado en la cola
     * @param size variable privada de tipo entero que indica la cantidad de elementos que posee la cola
     */
-    
     private Nodo first;
     private Nodo last;
     private int size;
@@ -25,7 +24,6 @@ public class Cola {
      * Constructor de la clase Cola, no recibe parámetro de entrada
      * automáticamente asigna valores de null a first y last, y 0 a size
      */
-    
     public Cola (){
         this.first = null;
         this.last = null;

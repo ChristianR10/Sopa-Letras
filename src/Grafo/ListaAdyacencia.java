@@ -81,27 +81,47 @@ public class ListaAdyacencia {
         }
     }
 
-    //getter and setter
+    /**
+     * @return variable interna NumAdy
+     */
     public int getNumAdy() {
         return NumAdy;
     }
 
+    /**
+     * modifica la variable interna NumAdy
+     * @param NumAdy nueva variable de tipo entero
+     */
     public void setNumAdy(int NumAdy) {
         this.NumAdy = NumAdy;
     }
 
+    /**
+     * @return variable interna first
+     */
     public Arista getFirst() {
         return first;
     }
 
+    /**
+     * modifica la variable interna arista
+     * @param first nueva variable de tipo arista
+     */
     public void setFirst(Arista first) {
         this.first = first;
     }
 
+    /**
+     * @return variable interna last
+     */
     public Arista getLast() {
         return last;
     }
 
+    /**
+     * modifica la variable interna last
+     * @param last nueva variable de tipo arista
+     */
     public void setLast(Arista last) {
         this.last = last;
     }

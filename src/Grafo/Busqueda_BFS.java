@@ -1,16 +1,14 @@
-
 package Grafo;
-import EDD.Pila;
 
+import EDD.Pila;
 
 /**
  * Clase Busqueda
  * Incluye lo referente a las dos metodologías de búsqueda de palabras en el grafo (BFS y DFS)
  * Esta clase depende de las clases Sopa_Letras, Pila, Arista, Grafo y Vertice
- * @author Christian Ramos y Andrés Rojas
+ * @author Christian Ramos
  * @version 1.0
  */
-
 public class Busqueda_BFS {
     
     /**
@@ -80,6 +78,5 @@ public class Busqueda_BFS {
             return z;
         }
     }
-    
 }
 

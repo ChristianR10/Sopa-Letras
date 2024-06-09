@@ -1,14 +1,10 @@
 package Grafo;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 import EDD.Pila;
+
 /**
  *
- * @author Andrés
+ * @author Andrés Rojas
  */
 public class Busqueda_DFS {
     private Pila Palabra;
@@ -16,12 +12,23 @@ public class Busqueda_DFS {
     private Pila PalabraEncontrada;
     private Pila CopiaInvertida;
     private Boolean WordFound;
+
+    /**
+     *
+     */
     public Busqueda_DFS(){
         this.PalabraEncontrada = new Pila();
         this.Palabra = new Pila();
         this.CopiaInvertida = new Pila();
         this.WordFound = false;
     }
+
+    /**
+     *
+     * @param G
+     * @param Palabra
+     * @return
+     */
     public Pila BuscarDFS(Grafo G, String Palabra){
         /**
         * Este método recibe un grafo y una palabra en string, y la búsqueda por un método de recorrido de árbol DFS

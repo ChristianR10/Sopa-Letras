@@ -1,4 +1,3 @@
-
 package EDD;
 
 import javax.swing.JOptionPane;
@@ -10,11 +9,11 @@ import javax.swing.JOptionPane;
  * @author Christian Ramos y Andrés Rojas
  * @version 1.0
  */
-
 public class Pila {
     /**
      * @param first apunta al nodo ubicado en el tope de la pila
      * @param size indica la cantidad de elementos que posee la pila
+     * @author Christian Ramos
      */
     private Nodo first;
     private int size;
@@ -22,6 +21,7 @@ public class Pila {
     /**
      * Constructor de la clase pila, no recibe ninguna entrada
      * asigna automáticamente cero al tamaño de la pila y first apunta a null
+     * @author Christian Ramos
      */
     public Pila (){
         this.first = null;
@@ -31,6 +31,7 @@ public class Pila {
     /**
      * Funcion de tipo boolena que indica si la pila esta vacía
      * @return true si la pila es vacía y false si la pila no es vacía
+     * @author Christian Ramos
      */
     public boolean vacia (){
     return first == null;
@@ -39,6 +40,7 @@ public class Pila {
     /**
      * Método que apila un nuevo elemento a la lista
      * @param X variable de tipo string que indica el elemento que se desee apilar
+     * @author Christian Ramos
      */
     public void apilar (String X){
         Nodo nodo = new Nodo (X);
@@ -55,6 +57,7 @@ public class Pila {
     
     /**
      * Método que desapila el último elemento de la pila
+     * @author Christian Ramos
      */
     public void desapilar (){
         if(!vacia()){
@@ -67,6 +70,7 @@ public class Pila {
      * Método que apila cada letra de una palabra en la pila
      * La primera letra de la palabra queda en el tope
      * @param S variable de tipo string que indica la palabra que se quiera apilar
+     * @author Christian Ramos
      */
     public void apilarPalabraInv (String S){
         String [] parts = S.split("");
@@ -79,6 +83,7 @@ public class Pila {
      * Función que busca un elemento dentro de la pila
      * @param X variable que indica el elemento que se desea buscar en la pila
      * @return true si el elemento se encuentra en la pila, false de caso contrario
+     * @author Christian Ramos
      */
     public boolean encontrado (String X){
         Nodo aux = this.first;
@@ -106,6 +111,8 @@ public class Pila {
     /**
      * Método que imprime todos los elementos de la pila, empezando por el tope
      * En el proceso, la pila se destruye
+     * @author Christian Ramos
+     * @Deprecated se uso para realizar pruebas pero no se incluyo en el programa final
      */
     public void imprimir (){
         String cadena = "";
@@ -120,6 +127,8 @@ public class Pila {
     /**
      * Método que imprime todos los elementos de la pila, empezando por el fondo
      * En el proceso, la pila se destruye
+     * @author Christian Ramos
+     * @Deprecated se uso para realizar pruebas pero no se incluyo en el programa final
      */
     public void imprimirInv (){
         String cadena = "";
@@ -130,19 +139,32 @@ public class Pila {
         JOptionPane.showMessageDialog(null, cadena);
     }
     
-    //getter and setter
+    /**
+     * @return primer elemento de la pila
+     */
     public Nodo getFirst() {
         return first;
     }
 
+    /**
+     * modifica el primer elemento de la pila
+     * @param first nueva variable de tipo nodo
+     */
     public void setFirst(Nodo first) {
         this.first = first;
     }
 
+    /**
+     * @return tamaño de la lista
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * modifica el tamaño de la lista
+     * @param size nueva variable de tipo entero
+     */
     public void setSize(int size) {
         this.size = size;
     }
