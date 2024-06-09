@@ -29,7 +29,7 @@ public class LecturaTXT {
     //retorna 2 txt no valido
     
     /**
-     * 
+     * Maneja todo el proceso de comprobación de la validez de un archivo txt
      * @param txt
      * @return Devuelve o un string válido de tanto la sopa de letras como todas las palabras, o un string vacío que representa que la palabra no es válida
      */
@@ -89,7 +89,7 @@ public class LecturaTXT {
     //en caso de que haya que modificar algun detalle palabra (acento)o haya que anexar alguna, que esta funcion retorne la nueva cadena , 
 
     /**
-     *
+     * Recibe un string con todas las palabras, procesa y elimina todas las palabras inválidas
      * @param txt
      * @return String de todas las palabras válidas para la sopa de letras, mínimo tres letras, mayúscula, sin carácteres especiales
      */
@@ -112,7 +112,7 @@ public class LecturaTXT {
     //en caso de que haya que modificar las letras, que esta funcion lo retorne
 
     /**
-     *
+     * Recibe un string con todas las letras que conforman la sopa de letras y verifica que todas las letras sean válidas
      * @param txt
      * @return Devuelve un string con toda las letras válidas para la sopa de letras, si alguna letra no es válida, devuelve un string vacío
      */
@@ -123,6 +123,7 @@ public class LecturaTXT {
         boolean letraValida;
         letraValida = false;
         if(LetrasSinEspacios.length()!=31){
+            JOptionPane.showMessageDialog(null, "Número incorrecto de letras para el tablero");
             return "";
         }
         for(int i = 0; i < LetrasSinEspacios.length(); i++){
@@ -168,7 +169,7 @@ public class LecturaTXT {
     //(realizar si hay modificaciones en la validacion o si se agrega una nueva palabra)
 
     /**
-     *
+     * Crea un string correcto modifico con solo palabras y letras válidas
      * @param TxT
      * @return Devuelve un string con la sopa de letras y el diccionario arreglado en un solo string
      */
@@ -183,7 +184,7 @@ public class LecturaTXT {
     //que solo tenga letras, no tenga acentos, min 3 letras y eso
 
     /**
-     *
+     * Función que verifica que una palabra sea válida
      * @param palabra
      * @return Devuelve un string, si es vacío, la palabra no es válida, si devuelve una palabra de vuelta, es agregada al string
      */

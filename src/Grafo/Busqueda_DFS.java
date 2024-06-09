@@ -24,11 +24,11 @@ public class Busqueda_DFS {
     }
 
     /**
-     *
+     * Función que realiza una búsqueda por DFS consiguiendo un poaible nodo raiz por una busqueda lineal
      * @param G Grafo de la sopa de letras, donde se buscará la palabra
      * @param Palabra String de la palabra a buscar
      * @return Devuelve una pila con las posiciones ordenadas de las letras de la palabra buscada, si es encontrada,
-     * en su defecto, devuelve una lista vacía
+     * en su defecto, devuelve una pila vacía
      */
     public Pila BuscarDFS(Grafo G, String Palabra){
 
@@ -47,7 +47,7 @@ public class Busqueda_DFS {
         return this.PalabraEncontrada;
     }
     /**
-     * 
+     * Realiza la búsqueda por manera de profundidad una vez obtenido 
      * @param Root Nodo que se tomará como la raíz del árbol para realizar la búsqueda DFS
      */
     private void DFS(Vertice Root){
@@ -72,7 +72,7 @@ public class Busqueda_DFS {
         }
     }
     /**
-     * 
+     * Revisa que una palabra sea correcta
      * @return devuelve un booleano indicando si la palabra encontrada es válida
      */
     private Boolean CheckWord(){
@@ -93,6 +93,7 @@ public class Busqueda_DFS {
         }
     }
     /**
+     * Función que crea una copia invertida de una posible palabra encontrada
      * @return No devuelve nada, procedimiento recursivo que crea una copia de la pila para comparar
      */ 
     private void Invertir(){
@@ -105,6 +106,7 @@ public class Busqueda_DFS {
         }
     }
     /**
+     * Función que vacía el atributo copia
      * @return No devuelve nada, manda a crear una copia de la pila que se va a comprobar y vacía el atributo CopiaInvertida
      */
     private void CrearCopia(){
